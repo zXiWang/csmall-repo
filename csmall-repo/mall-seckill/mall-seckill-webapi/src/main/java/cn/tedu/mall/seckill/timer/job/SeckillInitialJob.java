@@ -1,6 +1,5 @@
 package cn.tedu.mall.seckill.timer.job;
 
-import cn.tedu.mall.common.config.PrefixConfiguration;
 import cn.tedu.mall.pojo.seckill.model.SeckillSku;
 import cn.tedu.mall.pojo.seckill.model.SeckillSpu;
 import cn.tedu.mall.seckill.mapper.SeckillSkuMapper;
