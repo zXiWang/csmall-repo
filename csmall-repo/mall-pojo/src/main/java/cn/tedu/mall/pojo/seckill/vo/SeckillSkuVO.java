@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * 还有一个秒杀数量限制,
  * 其他和Sku相同
  */
-@ApiModel(value="秒杀商品SKU的VO",description = "一个包含了秒杀库存,秒杀价,原价,秒杀限制,和sku其他数据的VO对象")
+@ApiModel(value = "秒杀商品SKU的VO", description = "一个包含了秒杀库存,秒杀价,原价,秒杀限制,和sku其他数据的VO对象")
 @Data
 public class SeckillSkuVO implements Serializable {
     /**
@@ -74,7 +74,7 @@ public class SeckillSkuVO implements Serializable {
     /**
      * 秒杀价
      */
-    @ApiModelProperty(value="秒杀价")
+    @ApiModelProperty(value = "秒杀价")
     private BigDecimal seckillPrice;
     /**
      * 秒杀库存
@@ -114,6 +114,6 @@ public class SeckillSkuVO implements Serializable {
     /**
      * 秒杀数量限制
      */
-    @ApiModelProperty(value="秒杀商品数量限制")
+    @ApiModelProperty(value = "秒杀商品数量限制")
     private Integer seckillLimit;
 }

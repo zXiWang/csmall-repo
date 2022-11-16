@@ -8,14 +8,15 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 
 /**
  * 定义redis用到的redisTemplate对象序列化
+ *
  * @author xiaoxuwei
  * @since 1.0.0
  */
 @Configuration
 public class RedisCustomConfiguration {
-    @Bean(name="redisTemplate")
-    public RedisTemplate<String,Object> initRedisTemplate(RedisConnectionFactory redisConnectionFactory){
-        RedisTemplate<String,Object> redisTemplate=new RedisTemplate<String,Object>();
+    @Bean(name = "redisTemplate")
+    public RedisTemplate<String, Object> initRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         redisTemplate.setKeySerializer(RedisSerializer.string());
         redisTemplate.setValueSerializer(RedisSerializer.java());

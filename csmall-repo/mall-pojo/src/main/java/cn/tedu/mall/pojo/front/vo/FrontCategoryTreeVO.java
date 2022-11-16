@@ -10,16 +10,15 @@ import java.util.List;
 /**
  * 封装微服务调用查询的分类数据
  * 成为分类树结构返回
+ *
  * @author xiaoxuwei
  * @version 1.0.0
  */
 @ApiModel(value = "前台分类树")
 @Data
 public class FrontCategoryTreeVO<T> implements Serializable {
-    @ApiModelProperty(value="分类列表,包含下级分类")
+    @ApiModelProperty(value = "分类列表,包含下级分类")
     private List<T> categories;
-
-
 
 
 }

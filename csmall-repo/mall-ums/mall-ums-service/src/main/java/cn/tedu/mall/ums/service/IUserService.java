@@ -12,7 +12,7 @@ import cn.tedu.mall.pojo.ums.vo.UserVO;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface IUserService{
+public interface IUserService {
 
     UserVO queryOneUser(String username);
 
@@ -20,5 +20,5 @@ public interface IUserService{
 
     void checkValue(String value, String type);
 
-    void renewPassword(ChangePasswordDTO changePasswordDTO,String token);
+    void renewPassword(ChangePasswordDTO changePasswordDTO, String token);
 }

@@ -2,7 +2,6 @@ package cn.tedu.mall.sso.mapper.admin;
 
 import cn.tedu.mall.pojo.admin.model.Admin;
 import cn.tedu.mall.pojo.admin.vo.AdminVO;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -20,7 +19,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
  * @since 2021-12-02
  */
 @Qualifier("db1SqlSessionTemplate")
-public interface AdminMapper{
+public interface AdminMapper {
 
     /**
      * 根据管理员用户名查询管理员详情

@@ -19,10 +19,10 @@ public class SeckillQueueConsumer {
 
     // 下面开始编写接收消息队列中消息的方法
     @RabbitHandler
-    public void process(Success success){
+    public void process(Success success) {
         // 先减少库存
         skuMapper.updateReduceStockBySkuId(
-                success.getSkuId(),success.getQuantity());
+                success.getSkuId(), success.getQuantity());
         // 新增success对象到数据库
         successMapper.saveSuccess(success);
         // 如果上面两个数据库操作发生异常
@@ -30,7 +30,7 @@ public class SeckillQueueConsumer {
         // 如果需要精确的需求,发生异常时,可以将错误信息发送给死信队列,由人工处理
         // 死信队列是最后的办法,实际开发中慎用
 
-        int nuber=10;
+        int nuber = 10;
 
 
     }

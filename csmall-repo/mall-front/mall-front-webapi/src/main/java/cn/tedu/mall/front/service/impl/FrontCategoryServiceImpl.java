@@ -27,13 +27,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class FrontCategoryServiceImpl implements IFrontCategoryService {
 
+    public static final String CATEGORY_TREE_KEY = "category_tree";
     @DubboReference
     private IForFrontCategoryService dubboCategoryService;
-
     @Autowired
     private RedisTemplate redisTemplate;
-
-    public static final String CATEGORY_TREE_KEY = "category_tree";
 
     @Override
     public FrontCategoryTreeVO categoryTree() {

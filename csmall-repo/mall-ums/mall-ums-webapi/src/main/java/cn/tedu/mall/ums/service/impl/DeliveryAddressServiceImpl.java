@@ -36,8 +36,8 @@ public class DeliveryAddressServiceImpl implements IDeliveryAddressService {
     @Override
     public JsonPage<DeliveryAddressStandardVO> listAddress(Integer page, Integer pageSize) {
         Long userId = getUserId();
-        PageHelper.startPage(page,pageSize);
-        List<DeliveryAddressStandardVO> addresses=deliveryAddressMapper.selectAddressesByUserId(userId);
+        PageHelper.startPage(page, pageSize);
+        List<DeliveryAddressStandardVO> addresses = deliveryAddressMapper.selectAddressesByUserId(userId);
         return JsonPage.restPage(new PageInfo<>(addresses));
     }
 
@@ -45,16 +45,16 @@ public class DeliveryAddressServiceImpl implements IDeliveryAddressService {
     public void addAddress(DeliveryAddressAddDTO deliveryAddressAddDTO) {
         //转化数据
         Long userId = getUserId();
-        DeliveryAddress deliveryAddress=new DeliveryAddress();
+        DeliveryAddress deliveryAddress = new DeliveryAddress();
         //查询已存在
-        int count=deliveryAddressMapper.selectCountByUserId(userId);
-        if(count==0){
+        int count = deliveryAddressMapper.selectCountByUserId(userId);
+        if (count == 0) {
             //说明之前米有写入任何地址管理,第一个地址就是默认地址
             deliveryAddress.setDefaultAddress(1);
-        }else{
+        } else {
             deliveryAddress.setDefaultAddress(0);
         }
-        BeanUtils.copyProperties(deliveryAddressAddDTO,deliveryAddress);
+        BeanUtils.copyProperties(deliveryAddressAddDTO, deliveryAddress);
         deliveryAddress.setUserId(userId);
         deliveryAddressMapper.insertDeliveryAddress(deliveryAddress);
     }
@@ -62,8 +62,8 @@ public class DeliveryAddressServiceImpl implements IDeliveryAddressService {
     @Override
     public void editAddress(DeliveryAddressEditDTO deliveryAddressEditDTO) {
         //转化
-        DeliveryAddress deliveryAddress=new DeliveryAddress();
-        BeanUtils.copyProperties(deliveryAddressEditDTO,deliveryAddress);
+        DeliveryAddress deliveryAddress = new DeliveryAddress();
+        BeanUtils.copyProperties(deliveryAddressEditDTO, deliveryAddress);
         deliveryAddressMapper.updateAddressById(deliveryAddress);
     }
 
@@ -73,18 +73,19 @@ public class DeliveryAddressServiceImpl implements IDeliveryAddressService {
     }
 
     //TODO 可以和购物车业务层方法合并简化
-    public CsmallAuthenticationInfo getUserInfo(){
+    public CsmallAuthenticationInfo getUserInfo() {
         //从security环境获取username,先拿到authentication
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         //如果不是空的可以调用dubbo远程微服务获取adminVO
-        if(authentication!=null){
-            CsmallAuthenticationInfo csmallAuthenticationInfo=(CsmallAuthenticationInfo)authentication.getCredentials();
+        if (authentication != null) {
+            CsmallAuthenticationInfo csmallAuthenticationInfo = (CsmallAuthenticationInfo) authentication.getCredentials();
             return csmallAuthenticationInfo;
-        }else{
-            throw new CoolSharkServiceException(ResponseCode.UNAUTHORIZED,"没有登录者信息");
+        } else {
+            throw new CoolSharkServiceException(ResponseCode.UNAUTHORIZED, "没有登录者信息");
         }
     }
-    public Long getUserId(){
+
+    public Long getUserId() {
         CsmallAuthenticationInfo userInfo = getUserInfo();
         return userInfo.getId();
     }

@@ -184,6 +184,8 @@
 
     <!--全量查询分类 @xiao-->
     <select id="selectAllCategories" resultMap="StandardResultMap">
-        select <include refid="StandardQueryFields"/> from pms_category;
+        select
+        <include refid="StandardQueryFields"/>
+        from pms_category;
     </select>
 </mapper>

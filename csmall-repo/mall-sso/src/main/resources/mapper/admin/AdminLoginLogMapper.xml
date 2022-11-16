@@ -3,25 +3,22 @@
 <mapper namespace="cn.tedu.mall.sso.mapper.admin.AdminLoginLogMapper">
 
     <insert id="insertAdminLoginLog">
-        insert into ams_login_log (
-        admin_id,
-        username,
-        nickname,
-        ip,
-        user_agent,
-        gmt_create,
-        gmt_login,
-        gmt_modified
-        ) values (
-        #{adminId},
-        #{username},
-        #{nickname},
-        #{ip},
-        #{userAgent},
-        #{gmtCreate},
-        #{gmtLogin},
-        #{gmtModified}
-        )
+        insert into ams_login_log (admin_id,
+                                   username,
+                                   nickname,
+                                   ip,
+                                   user_agent,
+                                   gmt_create,
+                                   gmt_login,
+                                   gmt_modified)
+        values (#{adminId},
+                #{username},
+                #{nickname},
+                #{ip},
+                #{userAgent},
+                #{gmtCreate},
+                #{gmtLogin},
+                #{gmtModified})
     </insert>
 
 </mapper>

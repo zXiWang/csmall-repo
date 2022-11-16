@@ -6,6 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MallGatewayWebApi {
     public static void main(String[] args) {
-        SpringApplication.run(MallGatewayWebApi.class,args);
+        SpringApplication.run(MallGatewayWebApi.class, args);
     }
 }

@@ -4,43 +4,36 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.tedu.mall.pojo.admin.model.Role">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="description" property="description" />
-        <result column="sort" property="sort" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="sort" property="sort"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
     <select id="selectExistRoleById" resultType="int">
         select count(*)
-            from
-            ams_role
-        where
-            id=#{roleId}
+        from ams_role
+        where id = #{roleId}
     </select>
     <select id="selectRoles" resultType="cn.tedu.mall.pojo.admin.vo.RoleVO">
         select *
-            from
-            ams_role
+        from ams_role
         order by gmt_create desc
     </select>
     <select id="selectRolesLikeName" resultType="cn.tedu.mall.pojo.admin.vo.RoleVO">
         select *
-            from
-            ams_role
-        where
-            name like concat("%",#{query},"%")
+        from ams_role
+        where name like concat("%", #{query}, "%")
         order by gmt_create desc
     </select>
     <insert id="insertRole">
-        insert into ams_role (
-        name,
-        description,
-        sort
-        ) values (
-        #{name},
-        #{description},
-        #{sort})
+        insert into ams_role (name,
+                              description,
+                              sort)
+        values (#{name},
+                #{description},
+                #{sort})
     </insert>
     <update id="updateRole">
         update ams_role
@@ -59,9 +52,7 @@
     </update>
     <delete id="deleteRol">
         delete
-            from
-            ams_role
-        where
-            id=#{id}
+        from ams_role
+        where id = #{id}
     </delete>
 </mapper>

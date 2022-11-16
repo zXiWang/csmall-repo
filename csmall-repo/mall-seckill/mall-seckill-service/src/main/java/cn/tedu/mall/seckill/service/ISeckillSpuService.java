@@ -6,7 +6,7 @@ import cn.tedu.mall.pojo.seckill.vo.SeckillSpuVO;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author tedu.cn

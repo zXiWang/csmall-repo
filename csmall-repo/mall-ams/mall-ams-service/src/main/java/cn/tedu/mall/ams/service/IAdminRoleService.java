@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author tedu.cn
  * @since 2021-12-02
  */
-public interface IAdminRoleService{
+public interface IAdminRoleService {
     @Transactional
     void addAdminRoles(Long adminId, Long[] roleIds);
 }

@@ -4,19 +4,19 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.tedu.mall.pojo.ums.model.UserDetail">
-        <id column="id" property="id" />
-        <result column="user_id" property="userId" />
-        <result column="day_of_birth" property="dayOfBirth" />
-        <result column="country" property="country" />
-        <result column="province" property="province" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="day_of_birth" property="dayOfBirth"/>
+        <result column="country" property="country"/>
+        <result column="province" property="province"/>
         <result column="gender" property="gender"/>
-        <result column="city" property="city" />
-        <result column="district" property="district" />
-        <result column="education" property="education" />
-        <result column="industry" property="industry" />
-        <result column="career" property="career" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="education" property="education"/>
+        <result column="industry" property="industry"/>
+        <result column="career" property="career"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
     <!-- 标准查询字段列表 -->
     <sql id="StandardQueryFields">
@@ -54,37 +54,34 @@
         <result column="gender" property="gender"/>
     </resultMap>
     <insert id="insertUserDetail">
-        insert into ums_user_detail (
-        user_id,
-        day_of_birth,
-        country,
-        province,
-        gender,
-        city,
-        district,
-        education,
-        industry,
-        career
-        ) values (
-        #{userId},
-        #{dayOfBirth},
-        #{country},
-        #{province},
-        #{gender},
-        #{city},
-        #{district},
-        #{education},
-        #{industry},
-        #{career}
-        )
+        insert into ums_user_detail (user_id,
+                                     day_of_birth,
+                                     country,
+                                     province,
+                                     gender,
+                                     city,
+                                     district,
+                                     education,
+                                     industry,
+                                     career)
+        values (#{userId},
+                #{dayOfBirth},
+                #{country},
+                #{province},
+                #{gender},
+                #{city},
+                #{district},
+                #{education},
+                #{industry},
+                #{career})
     </insert>
     <select id="selectUserDetailByUserId" resultMap="StandardResultMap">
         select
-            <include refid="StandardQueryFields"/>
+        <include refid="StandardQueryFields"/>
         from
-            ums_user_detail
+        ums_user_detail
         where
-            user_id=#{userId}
+        user_id=#{userId}
     </select>
     <update id="updateUserDetailById">
         update ums_user_detail
@@ -117,14 +114,14 @@
                 career=#{career},
             </if>
         </set>
-            where id=#{id}
+        where id=#{id}
     </update>
     <select id="selectUserDetailById" resultMap="StandardResultMap">
         select
-            <include refid="StandardQueryFields"/>
+        <include refid="StandardQueryFields"/>
         from
-            ums_user_detail
+        ums_user_detail
         where
-            id=#{id}
+        id=#{id}
     </select>
 </mapper>

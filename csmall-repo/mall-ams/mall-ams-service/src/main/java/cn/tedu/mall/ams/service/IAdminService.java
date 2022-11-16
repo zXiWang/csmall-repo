@@ -14,9 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
  * @author tedu.cn
  * @since 2021-12-02
  */
-public interface IAdminService{
+public interface IAdminService {
     /**
      * 分页查询
+     *
      * @param pageNum
      * @param sizeNum
      * @return
@@ -25,12 +26,14 @@ public interface IAdminService{
 
     /**
      * 新增用户
+     *
      * @param adminDTO
      */
     void addAdmin(AdminAddDTO adminDTO);
 
     /**
      * 模糊查询用户
+     *
      * @param pageNum
      * @param sizeNum
      * @param query
@@ -40,6 +43,7 @@ public interface IAdminService{
 
     /**
      * 更新用户
+     *
      * @param adminUpdateDTO
      */
     @Transactional
@@ -47,9 +51,11 @@ public interface IAdminService{
 
     /**
      * 删除用户
+     *
      * @param id
      */
     @Transactional
     void deleteAdmin(Long id);
+
     AdminVO queryOneAdmin(String username);
 }

@@ -8,7 +8,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@ApiModel(value="前台SPU关联属性")
+@ApiModel(value = "前台SPU关联属性")
 @Data
 public class FrontAttributeSimpleVO implements Serializable {
 
@@ -76,14 +76,14 @@ public class FrontAttributeSimpleVO implements Serializable {
      * 数据创建时间
      */
     @ApiModelProperty(value = "数据创建时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtCreate;
 
     /**
      * 数据最后修改时间
      */
     @ApiModelProperty(value = "数据最后修改时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtModified;
 
     @ApiModelProperty(value = "是否影响图片分组", notes = "0=不影响，1=影响")

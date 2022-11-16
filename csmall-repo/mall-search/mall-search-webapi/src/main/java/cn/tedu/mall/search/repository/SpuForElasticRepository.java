@@ -1,19 +1,17 @@
 package cn.tedu.mall.search.repository;
 
 import cn.tedu.mall.pojo.search.entity.SpuForElastic;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * SpuForElastic实体类操作
- */
+// SpuForElastic实体类操作ES的持久层接口
+// 需要继承SpringData给定的父接口,继承之后可以直接使用提供的基本增删改查方法
 @Repository
-public interface SpuForElasticRepository extends ElasticsearchRepository<SpuForElastic, Long> {
-
+public interface SpuForElasticRepository extends
+        ElasticsearchRepository<SpuForElastic, Long> {
     // 查询title字段包含指定关键字(分词)的spu数据
     Iterable<SpuForElastic> querySpuForElasticsByTitleMatches(String title);
 

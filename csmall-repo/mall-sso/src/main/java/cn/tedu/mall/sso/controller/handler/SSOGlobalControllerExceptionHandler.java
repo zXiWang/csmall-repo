@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 */
 /**
  * <p>全局异常处理器</p>
+ * <p>
+ * 可控异常,自定义异常
+ * <p>
+ * 系统异常
  *//*
 
 @RestControllerAdvice(basePackages = "cn.tedu.mall.sso.controller")
@@ -18,8 +22,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class SSOGlobalControllerExceptionHandler {
     */
 /**
-     * 可控异常,自定义异常
-     *//*
+ * 可控异常,自定义异常
+ *//*
 
     @ExceptionHandler({CoolSharkServiceException.class})
     public JsonResult handleCoolSharkServiceException(CoolSharkServiceException e) {
@@ -29,8 +33,8 @@ public class SSOGlobalControllerExceptionHandler {
 
     */
 /**
-     * 系统异常
-     *//*
+ * 系统异常
+ *//*
 
     @ExceptionHandler({Throwable.class})
     public JsonResult handleSystemError(Throwable e) {

@@ -151,7 +151,9 @@
     </select>
 
     <update id="updateStockById">
-        update pms_sku set stock=stock-#{stock}
-        where id=#{id} and stock>#{stock}
+        update pms_sku
+        set stock=stock - #{stock}
+        where id = #{id}
+          and stock > #{stock}
     </update>
 </mapper>

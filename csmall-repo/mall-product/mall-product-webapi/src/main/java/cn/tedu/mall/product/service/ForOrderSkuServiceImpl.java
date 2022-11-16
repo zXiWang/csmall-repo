@@ -15,11 +15,12 @@ import org.springframework.stereotype.Service;
 public class ForOrderSkuServiceImpl implements IForOrderSkuService {
     @Autowired
     private SkuMapper skuMapper;
+
     @Override
     @GlobalTransactional
     public int reduceStockNum(Long skuId, Integer quantity) {
 
-        return skuMapper.updateStockById(skuId,quantity);
+        return skuMapper.updateStockById(skuId, quantity);
     }
 
     @Override

@@ -124,15 +124,15 @@
     <!-- int insert(Spu spu); -->
     <insert id="insert">
         insert into pms_spu (id, name, type_number, title, description,
-            list_price, stock, stock_threshold, unit, brand_id,
-            brand_name, category_id, category_name, attribute_template_id, album_id,
-            pictures, keywords, tags, sort, is_deleted,
-            is_published, is_new_arrival, is_recommend, is_checked, gmt_check)
+                             list_price, stock, stock_threshold, unit, brand_id,
+                             brand_name, category_id, category_name, attribute_template_id, album_id,
+                             pictures, keywords, tags, sort, is_deleted,
+                             is_published, is_new_arrival, is_recommend, is_checked, gmt_check)
         values (#{id}, #{name}, #{typeNumber}, #{title}, #{description},
-            #{listPrice}, #{stock}, #{stockThreshold}, #{unit}, #{brandId},
-            #{brandName}, #{categoryId}, #{categoryName}, #{attributeTemplateId}, #{albumId},
-            #{pictures}, #{keywords}, #{tags}, #{sort}, #{deleted},
-            #{published}, #{newArrival}, #{recommend}, #{checked}, #{gmtCheck})
+                #{listPrice}, #{stock}, #{stockThreshold}, #{unit}, #{brandId},
+                #{brandName}, #{categoryId}, #{categoryName}, #{attributeTemplateId}, #{albumId},
+                #{pictures}, #{keywords}, #{tags}, #{sort}, #{deleted},
+                #{published}, #{newArrival}, #{recommend}, #{checked}, #{gmtCheck})
     </insert>
 
     <!-- int deleteById(Long id); -->

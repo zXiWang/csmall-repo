@@ -16,6 +16,7 @@ public class ForSeckillSpuServiceImpl implements IForSeckillSpuService {
     private SpuMapper spuMapper;
     @Autowired
     private SpuDetailMapper spuDetailMapper;
+
     @Override
     public SpuStandardVO getSpuById(Long spuId) {
         return spuMapper.getById(spuId);

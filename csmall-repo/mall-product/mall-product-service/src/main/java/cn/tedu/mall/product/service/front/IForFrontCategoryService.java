@@ -10,6 +10,7 @@ import java.util.List;
 public interface IForFrontCategoryService {
     /**
      * 全量查询商品分类列表
+     *
      * @return
      */
     List<CategoryStandardVO> getCategoryList();

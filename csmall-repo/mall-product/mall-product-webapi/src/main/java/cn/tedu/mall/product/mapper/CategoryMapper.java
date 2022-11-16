@@ -53,7 +53,7 @@ public interface CategoryMapper {
     /**
      * 设置将指定类别的"是否显示在导航栏中"的值
      *
-     * @param id        需要将"是否包含子级类别"设置为真（1）的类别的id
+     * @param id      需要将"是否包含子级类别"设置为真（1）的类别的id
      * @param display 是否显示在导航栏中，1=启用，0=未启用
      * @return 受影响的行数
      */
@@ -133,6 +133,7 @@ public interface CategoryMapper {
 
     /**
      * 全量查询分类列表
+     *
      * @return
      */
     List<CategoryStandardVO> selectAllCategories();

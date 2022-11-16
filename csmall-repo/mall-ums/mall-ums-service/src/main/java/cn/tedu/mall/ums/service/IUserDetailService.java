@@ -12,7 +12,7 @@ import cn.tedu.mall.pojo.ums.vo.UserDetailStandardVO;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface IUserDetailService{
+public interface IUserDetailService {
 
     void addUserDetail(UserDetailAddDTO userDetailAddDTO);
 

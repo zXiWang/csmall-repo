@@ -20,10 +20,7 @@
     </resultMap>
 
     <insert id="saveSuccess">
-        insert into success(
-                            user_id,
-
-        )
+        insert into success(user_id,)
     </insert>
 
 

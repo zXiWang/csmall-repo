@@ -1,12 +1,32 @@
 package cn.tedu.mall.resource.util;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class FileUploadUtils {
+
+    /**
+     * 日期格式化模式字符串
+     */
+    private static final String PATTERN_DATE = "yyyy/MM/dd";
+    /**
+     * 日期时间格式化模式字符串
+     */
+    private static final String PATTERN_DATE_TIME = "yyyyMMddHHmmssSSS";
+    /**
+     * 格式化为日期的工具对象
+     */
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE);
+    /**
+     * 格式化为日期时间的工具对象
+     */
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME);
+    /**
+     * 随机数工具对象
+     */
+    private static final Random RANDOM = new Random();
 
     /**
      * 根据日期生成文件夹名称
@@ -76,27 +96,6 @@ public class FileUploadUtils {
             }
         }
     }
-
-    /**
-     * 日期格式化模式字符串
-     */
-    private static final String PATTERN_DATE = "yyyy/MM/dd";
-    /**
-     * 日期时间格式化模式字符串
-     */
-    private static final String PATTERN_DATE_TIME = "yyyyMMddHHmmssSSS";
-    /**
-     * 格式化为日期的工具对象
-     */
-    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE);
-    /**
-     * 格式化为日期时间的工具对象
-     */
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(PATTERN_DATE_TIME);
-    /**
-     * 随机数工具对象
-     */
-    private static final Random RANDOM = new Random();
 
     /**
      * 生成6位长度的随机数字

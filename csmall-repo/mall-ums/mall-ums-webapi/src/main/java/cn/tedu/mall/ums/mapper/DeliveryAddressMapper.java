@@ -17,7 +17,7 @@ public interface DeliveryAddressMapper {
 
     void insertDeliveryAddress(DeliveryAddress deliveryAddress);
 
-    int selectCountByUserId(@Param("userId")Long userId);
+    int selectCountByUserId(@Param("userId") Long userId);
 
     void updateAddressById(DeliveryAddress deliveryAddress);
 

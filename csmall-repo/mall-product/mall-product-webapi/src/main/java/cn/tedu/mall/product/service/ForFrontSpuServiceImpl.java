@@ -8,9 +8,9 @@ import cn.tedu.mall.pojo.product.query.SpuQuery;
 import cn.tedu.mall.pojo.product.vo.SpuDetailStandardVO;
 import cn.tedu.mall.pojo.product.vo.SpuListItemVO;
 import cn.tedu.mall.pojo.product.vo.SpuStandardVO;
-import cn.tedu.mall.product.service.front.IForFrontSpuService;
 import cn.tedu.mall.product.mapper.SpuDetailMapper;
 import cn.tedu.mall.product.mapper.SpuMapper;
+import cn.tedu.mall.product.service.front.IForFrontSpuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -26,17 +26,19 @@ public class ForFrontSpuServiceImpl implements IForFrontSpuService {
     private SpuMapper spuMapper;
     @Autowired
     private SpuDetailMapper spuDetailMapper;
+
     @Override
     public JsonPage<SpuListItemVO> listSpuByCategoryId(Long categoryId, Integer page, Integer pageSize) {
-        SpuQuery spuQuery=new SpuQuery();
+        SpuQuery spuQuery = new SpuQuery();
         spuQuery.setCategoryId(categoryId);
-        PageHelper.startPage(page,pageSize);
+        PageHelper.startPage(page, pageSize);
         List<SpuListItemVO> spuListItemVOs = spuMapper.listByCustomCondition(spuQuery);
         return JsonPage.restPage(new PageInfo<>(spuListItemVOs));
     }
 
     /**
      * 和已有方法重复
+     *
      * @param id
      * @return
      */
@@ -57,8 +59,8 @@ public class ForFrontSpuServiceImpl implements IForFrontSpuService {
 
     @Override
     public JsonPage<Spu> getSpuByPage(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        List<Spu> list=spuMapper.findAllList();
+        PageHelper.startPage(pageNum, pageSize);
+        List<Spu> list = spuMapper.findAllList();
         return JsonPage.restPage(new PageInfo<>(list));
     }
 }

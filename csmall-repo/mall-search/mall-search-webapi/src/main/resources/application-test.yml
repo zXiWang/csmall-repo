@@ -1,6 +1,6 @@
 my:
   server:
-    addr: localhost
+    addr: 176.13.14.106
 spring:
   application:
     name: mall-search
@@ -17,7 +17,7 @@ spring:
     host: ${my.server.addr}
     port: 6379
     password:
-      #dubbo
+    #dubbo
 dubbo:
   application:
     name: mall-search

@@ -12,6 +12,6 @@ import org.springframework.context.annotation.Import;
 @Import({MallCommonConfiguration.class})
 public class MallFrontWebApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MallFrontWebApiApplication.class,args);
+        SpringApplication.run(MallFrontWebApiApplication.class, args);
     }
 }

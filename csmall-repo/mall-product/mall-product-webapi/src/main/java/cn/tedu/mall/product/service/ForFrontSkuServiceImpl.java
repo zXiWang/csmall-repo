@@ -1,10 +1,8 @@
 package cn.tedu.mall.product.service;
 
-import cn.tedu.mall.common.restful.JsonPage;
-import cn.tedu.mall.pojo.product.model.Spu;
 import cn.tedu.mall.pojo.product.vo.SkuStandardVO;
-import cn.tedu.mall.product.service.front.IForFrontSkuService;
 import cn.tedu.mall.product.mapper.SkuMapper;
+import cn.tedu.mall.product.service.front.IForFrontSkuService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +14,10 @@ import java.util.List;
 public class ForFrontSkuServiceImpl implements IForFrontSkuService {
     @Autowired
     private SkuMapper skuMapper;
+
     @Override
     public List<SkuStandardVO> getSkusBySpuId(Long spuId) {
-        List<SkuStandardVO> skus=skuMapper.listBySpuId(spuId);
+        List<SkuStandardVO> skus = skuMapper.listBySpuId(spuId);
         return skus;
     }
 

@@ -27,13 +27,13 @@ public class SeckillSpuController {
     @GetMapping("/list")
     @ApiOperation("分页查询秒杀spu商品列表")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "页码",name = "page",example = "1"),
-            @ApiImplicitParam(value = "每页条数",name = "pageSize",example = "10")
+            @ApiImplicitParam(value = "页码", name = "page", example = "1"),
+            @ApiImplicitParam(value = "每页条数", name = "pageSize", example = "10")
     })
     public JsonResult<JsonPage<SeckillSpuVO>> listSeckillSpus(
-            Integer page,Integer pageSize){
-        JsonPage<SeckillSpuVO> jsonPage=seckillSpuService
-                .listSeckillSpus(page,pageSize);
+            Integer page, Integer pageSize) {
+        JsonPage<SeckillSpuVO> jsonPage = seckillSpuService
+                .listSeckillSpus(page, pageSize);
         return JsonResult.ok(jsonPage);
 
     }
@@ -41,9 +41,9 @@ public class SeckillSpuController {
     // localhost:10007/seckill/spu/2/detail
     @GetMapping("/{spuId}/detail")
     @ApiOperation("根据spuId查询detail详情")
-    @ApiImplicitParam(value = "spuId",name="spuId",example = "2")
+    @ApiImplicitParam(value = "spuId", name = "spuId", example = "2")
     public JsonResult<SeckillSpuDetailSimpleVO> getSeckillDetail(
-            @PathVariable Long spuId){
+            @PathVariable Long spuId) {
         SeckillSpuDetailSimpleVO simpleVO =
                 seckillSpuService.getSeckillSpuDetail(spuId);
         return JsonResult.ok(simpleVO);
@@ -52,10 +52,10 @@ public class SeckillSpuController {
     // localhost:10007/seckill/spu/2
     @GetMapping("/{spuId}")
     @ApiOperation("根据spuId查询spu相关信息")
-    @ApiImplicitParam(value = "spuId",name="spuId",example = "2")
+    @ApiImplicitParam(value = "spuId", name = "spuId", example = "2")
     public JsonResult<SeckillSpuVO> getSeckillSpuVO(
-            @PathVariable Long spuId){
-        SeckillSpuVO seckillSpuVO=seckillSpuService.getSeckillSpu(spuId);
+            @PathVariable Long spuId) {
+        SeckillSpuVO seckillSpuVO = seckillSpuService.getSeckillSpu(spuId);
         return JsonResult.ok(seckillSpuVO);
 
     }

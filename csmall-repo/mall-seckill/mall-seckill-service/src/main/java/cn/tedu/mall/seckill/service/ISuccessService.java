@@ -8,6 +8,6 @@ package cn.tedu.mall.seckill.service;
  * @author tedu.cn
  * @since 2022-02-23
  */
-public interface ISuccessService{
+public interface ISuccessService {
 
 }

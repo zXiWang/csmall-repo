@@ -8,6 +8,6 @@ package cn.tedu.mall.ums.service;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface IRewardPointLogService{
+public interface IRewardPointLogService {
 
 }

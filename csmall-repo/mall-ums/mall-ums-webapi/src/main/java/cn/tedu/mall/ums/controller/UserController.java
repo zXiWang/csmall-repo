@@ -19,7 +19,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,50 +40,54 @@ public class UserController {
     private IUserService userService;
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;//Bearer
+
     /**
      * 注册用户
+     *
      * @param userRegistyDTO
      * @return
      */
-    @ApiOperation(value="注册用户")
+    @ApiOperation(value = "注册用户")
     @PostMapping("/register")
     @PreAuthorize("permitAll()")
-    public JsonResult doRegister(UserRegistryDTO userRegistyDTO){
+    public JsonResult doRegister(UserRegistryDTO userRegistyDTO) {
         userService.doRegister(userRegistyDTO);
         return JsonResult.ok();
     }
 
-    @ApiOperation(value="校验手机,邮箱,用户名是否重复")
+    @ApiOperation(value = "校验手机,邮箱,用户名是否重复")
     @PostMapping("/checkValue")
     @PreAuthorize("permitAll()")
     @ApiImplicitParams({
-            @ApiImplicitParam(value="校验值",name="value",type = "string"),
-            @ApiImplicitParam(value="校验值类型,phone,username,email",name="type",type = "string")
+            @ApiImplicitParam(value = "校验值", name = "value", type = "string"),
+            @ApiImplicitParam(value = "校验值类型,phone,username,email", name = "type", type = "string")
     })
-    public JsonResult checkValue(String value,String type){
-        userService.checkValue(value,type);
+    public JsonResult checkValue(String value, String type) {
+        userService.checkValue(value, type);
         return JsonResult.ok();
     }
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;//Bearer
+
     /**
      * 修改登录密码
      */
-    @ApiOperation(value="修改登录密码")
+    @ApiOperation(value = "修改登录密码")
     @PostMapping("/renew/password")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult renewPassword(@Valid ChangePasswordDTO changePasswordDTO, HttpServletRequest request,@RequestHeader("Authorization") String authToken){
+    public JsonResult renewPassword(@Valid ChangePasswordDTO changePasswordDTO, HttpServletRequest request, @RequestHeader("Authorization") String authToken) {
         String ip = LoginUtils.getIpAddress(request);
         changePasswordDTO.setIp(ip);
         String userAgent = request.getHeader("User-Agent");
         changePasswordDTO.setUserAgent(userAgent);
         String token = getToken(authToken);
-        userService.renewPassword(changePasswordDTO,token);
+        userService.renewPassword(changePasswordDTO, token);
         return JsonResult.ok();
     }
-    public String getToken(String authToken){
-        if (authToken==null||!(authToken.startsWith("Bearer "))){
-            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST,"无法从请求中拿到token");
+
+    public String getToken(String authToken) {
+        if (authToken == null || !(authToken.startsWith("Bearer "))) {
+            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST, "无法从请求中拿到token");
         }
         return authToken.substring(tokenHead.length());
     }

@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * 前台商城搜索商品条件对象
+ *
  * @author xiaoxuwei
  * @version 1.0.0
  */

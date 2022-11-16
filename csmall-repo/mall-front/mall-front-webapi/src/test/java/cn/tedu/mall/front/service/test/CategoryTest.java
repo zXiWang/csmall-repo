@@ -10,12 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes= MallFrontWebApiApplication.class)
+@SpringBootTest(classes = MallFrontWebApiApplication.class)
 public class CategoryTest {
     @Autowired
     private FrontCategoryServiceImpl frontCategoryService;
+
     @Test
-    public void test(){
+    public void test() {
         FrontCategoryTreeVO frontCategoryTreeVO = frontCategoryService.categoryTree();
         System.out.println(frontCategoryTreeVO);
     }

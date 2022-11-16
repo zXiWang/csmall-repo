@@ -3,7 +3,7 @@ package cn.tedu.mall.ams.mapper;
 import cn.tedu.mall.pojo.admin.model.Admin;
 import cn.tedu.mall.pojo.admin.vo.AdminVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**

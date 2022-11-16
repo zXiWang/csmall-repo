@@ -4,25 +4,27 @@
 >
 > 世界上没有两片完全相同的树叶。
 >
-> ​								— 莱布尼茨
+> ​ — 莱布尼茨
 
 [中文文档](./README_CN.md) | [English Document](./README.md)
 
 ## Introduction
 
-Leaf 最早期需求是各个业务线的订单ID生成需求。在美团早期，有的业务直接通过DB自增的方式生成ID，有的业务通过redis缓存来生成ID，也有的业务直接用UUID这种方式来生成ID。以上的方式各自有各自的问题，因此我们决定实现一套分布式ID生成服务来满足需求。具体Leaf 设计文档见：[ leaf 美团分布式ID生成服务 ](https://tech.meituan.com/MT_Leaf.html )
+Leaf
+最早期需求是各个业务线的订单ID生成需求。在美团早期，有的业务直接通过DB自增的方式生成ID，有的业务通过redis缓存来生成ID，也有的业务直接用UUID这种方式来生成ID。以上的方式各自有各自的问题，因此我们决定实现一套分布式ID生成服务来满足需求。具体Leaf
+设计文档见：[ leaf 美团分布式ID生成服务 ](https://tech.meituan.com/MT_Leaf.html )
 
 目前Leaf覆盖了美团点评公司内部金融、餐饮、外卖、酒店旅游、猫眼电影等众多业务线。在4C8G VM基础上，通过公司RPC方式调用，QPS压测结果近5w/s，TP999 1ms。
 
 ## Quick Start
 
 ### 使用starter注解启动leaf
+
 https://github.com/Meituan-Dianping/Leaf/blob/feature/spring-boot-starter/README_CN.md
 
 ### Leaf Server
 
 我们提供了一个基于spring boot的HTTP服务来获取ID
-
 
 #### 配置介绍
 
@@ -76,6 +78,7 @@ insert into leaf_alloc(biz_tag, max_id, step, description) values('leaf-segment-
 ##### 配置zookeeper地址
 
 在leaf.properties中配置leaf.snowflake.zk.address，配置leaf 服务监听的端口leaf.snowflake.port。
+
 #### 运行Leaf Server
 
 ##### 打包服务
@@ -91,6 +94,7 @@ cd leaf-server
 ##### 运行服务
 
 *注意:首先得先配置好数据库表或者zk地址*
+
 ###### mvn方式
 
 ```shell
@@ -102,6 +106,7 @@ mvn spring-boot:run
 ```shell
 sh deploy/run.sh
 ```
+
 ##### 测试
 
 ```shell
@@ -120,4 +125,5 @@ curl http://localhost:8080/api/snowflake/get/test
 当然，为了追求更高的性能，需要通过RPC Server来部署Leaf 服务，那仅需要引入leaf-core的包，把生成ID的API封装到指定的RPC框架中即可。
 
 ### 注意事项
+
 注意现在leaf使用snowflake模式的情况下 其获取ip的逻辑直接取首个网卡ip【特别对于会更换ip的服务要注意】避免浪费workId

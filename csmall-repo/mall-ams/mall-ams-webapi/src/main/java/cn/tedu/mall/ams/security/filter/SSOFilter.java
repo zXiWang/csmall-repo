@@ -28,14 +28,13 @@ import java.util.List;
 @Component
 @Slf4j
 public class SSOFilter extends OncePerRequestFilter {
+    private static final String REQUEST_HEADER_AUTHORIZATION = "Authorization";
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
     @Value("${jwt.tokenHead}")
     private String jwtTokenHead;
-
-    private static final String REQUEST_HEADER_AUTHORIZATION = "Authorization";
 
     @Override
     protected void doFilterInternal(
@@ -51,26 +50,26 @@ public class SSOFilter extends OncePerRequestFilter {
             String authToken = authHeader.substring(jwtTokenHead.length());
             //从redis验证是否已经退出登录
             //写入redis 锁住 这里采用list分日期存储,方便后续定时清理
-            String lockedTokenList="token_list_.lock";
+            String lockedTokenList = "token_list_.lock";
             Boolean member = stringRedisTemplate.boundSetOps(lockedTokenList).isMember(authToken);
-            if(member){
-                log.info("从redis拿到登录的token:"+authToken);
+            if (member) {
+                log.info("从redis拿到登录的token:" + authToken);
                 filterChain.doFilter(httpServletRequest, httpServletResponse);
                 return;
             }
             CsmallAuthenticationInfo userInfo = jwtTokenUtils.getUserInfo(authToken);
-            UsernamePasswordAuthenticationToken authentication=null;
+            UsernamePasswordAuthenticationToken authentication = null;
             if (userInfo != null) {
-                List<String> authoritiesString=userInfo.getAuthorities();
-                List<GrantedAuthority> authorities=new ArrayList<>();
+                List<String> authoritiesString = userInfo.getAuthorities();
+                List<GrantedAuthority> authorities = new ArrayList<>();
                 for (String authorityValue : authoritiesString) {
                     authorities.add(new SimpleGrantedAuthority(authorityValue));
                 }
-                authentication=
-                        new UsernamePasswordAuthenticationToken(userInfo.getUsername(),userInfo,authorities);
+                authentication =
+                        new UsernamePasswordAuthenticationToken(userInfo.getUsername(), userInfo, authorities);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-            }else{
+            } else {
                 /*throw new CoolSharkServiceException(ResponseCode.UNAUTHORIZED,"您的token不正确,请重新登录");*/
                 SecurityContextHolder.setContext(SecurityContextHolder.createEmptyContext());
             }

@@ -7,5 +7,5 @@ package cn.tedu.mall.ams.mapper;
  * @since 2021-12-02
  */
 @Deprecated
-public interface LoginLogMapper{
+public interface LoginLogMapper {
 }

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,18 +26,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminRoleController {
     @Autowired
     private IAdminRoleService adminRoleService;
+
     /**
      * 账号新增关联角色
      */
-    @ApiOperation(value="重新绑定角色账号关联")
+    @ApiOperation(value = "重新绑定角色账号关联")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('/ams/admin/read')")
     @ApiImplicitParams({
-            @ApiImplicitParam(value="用户id",name="adminId"),
-            @ApiImplicitParam(value="角色ids,数组",name="roleIds",allowMultiple = true,dataType = "Array")
+            @ApiImplicitParam(value = "用户id", name = "adminId"),
+            @ApiImplicitParam(value = "角色ids,数组", name = "roleIds", allowMultiple = true, dataType = "Array")
     })
-    public JsonResult addAdminRole(Long adminId, Long[] roleIds){
-        adminRoleService.addAdminRoles(adminId,roleIds);
+    public JsonResult addAdminRole(Long adminId, Long[] roleIds) {
+        adminRoleService.addAdminRoles(adminId, roleIds);
         return JsonResult.ok();
     }
 }

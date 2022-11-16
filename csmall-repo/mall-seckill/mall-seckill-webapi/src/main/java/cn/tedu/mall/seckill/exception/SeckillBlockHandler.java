@@ -15,12 +15,11 @@ public class SeckillBlockHandler {
     // 在其他类中声明的限流方法,在控制器中调用的,要声明为静态,否则无法实现
     public static JsonResult seckillBlock(String randCode,
                                           SeckillOrderAddDTO seckillOrderAddDTO,
-                                          BlockException e){
+                                          BlockException e) {
         log.error("一个请求被限流了");
         return JsonResult.failed(ResponseCode.INTERNAL_SERVER_ERROR,
                 "服务器忙请稍后再试!");
     }
-
 
 
 }

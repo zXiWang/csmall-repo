@@ -1,7 +1,6 @@
 package cn.tedu.mall.pojo.ums.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDate;

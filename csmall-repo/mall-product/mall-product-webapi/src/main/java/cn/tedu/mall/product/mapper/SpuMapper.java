@@ -7,7 +7,6 @@ import cn.tedu.mall.pojo.product.vo.SpuStandardVO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;

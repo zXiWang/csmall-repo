@@ -1,10 +1,10 @@
 package cn.tedu.mall.common.utils;
+
 import cn.tedu.mall.common.exception.CoolSharkServiceException;
 import cn.tedu.mall.common.pojo.domain.CsmallAuthenticationInfo;
 import cn.tedu.mall.common.restful.ResponseCode;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,7 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * JWT工具类
@@ -85,14 +87,14 @@ public class JwtTokenUtils {
      * 根据JWT Token获取userDetails信息 active=true
      */
     public CsmallAuthenticationInfo getUserInfo(String token) {
-        Claims claims=null;
-        String userInfoJson=null;
+        Claims claims = null;
+        String userInfoJson = null;
         try {
             claims = getClaimsFromToken(token);
-            if(claims==null){
+            if (claims == null) {
                 return null;
             }
-            userInfoJson= (String) claims.get(CLAIM_KEY_USERNAME);
+            userInfoJson = (String) claims.get(CLAIM_KEY_USERNAME);
             log.info("获取到userDetails中各种属性：{}", userInfoJson);
         } catch (NullPointerException e) {
             log.info("Token解析失败，当前Token完全无效，无法解析数据！", e);
@@ -100,11 +102,11 @@ public class JwtTokenUtils {
         }
         // 拿到载荷之后，解析userDetails对象
         try {
-            CsmallAuthenticationInfo userInfo=
-                    JSON.parseObject(userInfoJson,CsmallAuthenticationInfo.class);
+            CsmallAuthenticationInfo userInfo =
+                    JSON.parseObject(userInfoJson, CsmallAuthenticationInfo.class);
             return userInfo;
         } catch (Exception e) {
-            log.info("尝试解析token为userDetails失败",e);
+            log.info("尝试解析token为userDetails失败", e);
             return null;
         }
     }
@@ -167,17 +169,17 @@ public class JwtTokenUtils {
      */
     public String generateToken(CsmallAuthenticationInfo userInfo) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put(CLAIM_KEY_CREATED,new Date());
-        String userInfoJson=null;
-        try{
-            userInfoJson=JSON.toJSONString(userInfo);
-        }catch(Exception e){
-            log.info("将用户信息转化成json字符串出现错误,错误信息:{}",e.getMessage());
+        claims.put(CLAIM_KEY_CREATED, new Date());
+        String userInfoJson = null;
+        try {
+            userInfoJson = JSON.toJSONString(userInfo);
+        } catch (Exception e) {
+            log.info("将用户信息转化成json字符串出现错误,错误信息:{}", e.getMessage());
         }
-        if(userInfo==null){
-            throw new CoolSharkServiceException(ResponseCode.INTERNAL_SERVER_ERROR,"无法转化认证用户信息json");
+        if (userInfo == null) {
+            throw new CoolSharkServiceException(ResponseCode.INTERNAL_SERVER_ERROR, "无法转化认证用户信息json");
         }
-        claims.put(CLAIM_KEY_USERNAME,userInfoJson);
+        claims.put(CLAIM_KEY_USERNAME, userInfoJson);
         return generateToken(claims);
     }
 

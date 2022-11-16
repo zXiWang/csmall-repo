@@ -14,7 +14,7 @@ import cn.tedu.mall.pojo.ums.vo.DeliveryAddressStandardVO;
  * @since 2022-02-22
  */
 
-public interface IDeliveryAddressService{
+public interface IDeliveryAddressService {
 
     JsonPage<DeliveryAddressStandardVO> listAddress(Integer page, Integer pageSize);
 

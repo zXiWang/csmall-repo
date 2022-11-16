@@ -3,14 +3,14 @@ package cn.tedu.mall.product.service;
 import cn.tedu.mall.common.exception.CoolSharkServiceException;
 import cn.tedu.mall.common.restful.JsonPage;
 import cn.tedu.mall.common.restful.ResponseCode;
-import cn.tedu.mall.product.constant.DataCommonConst;
-import cn.tedu.mall.product.mapper.SkuMapper;
-import cn.tedu.mall.product.mapper.SkuSpecificationMapper;
 import cn.tedu.mall.pojo.product.dto.SkuAddNewDTO;
 import cn.tedu.mall.pojo.product.dto.SkuUpdateFullInfoDTO;
 import cn.tedu.mall.pojo.product.model.Sku;
 import cn.tedu.mall.pojo.product.model.SkuSpecification;
 import cn.tedu.mall.pojo.product.vo.SkuStandardVO;
+import cn.tedu.mall.product.constant.DataCommonConst;
+import cn.tedu.mall.product.mapper.SkuMapper;
+import cn.tedu.mall.product.mapper.SkuSpecificationMapper;
 import cn.tedu.mall.product.utils.IdGeneratorUtils;
 import cn.tedu.mall.product.utils.ListConvertUtils;
 import com.github.pagehelper.PageHelper;
@@ -61,7 +61,7 @@ public class SkuServiceImpl implements ISkuService {
     }
 
     @Override
-    public void  updateFullInfoById(Long id, SkuUpdateFullInfoDTO skuUpdateFullInfoDTO) {
+    public void updateFullInfoById(Long id, SkuUpdateFullInfoDTO skuUpdateFullInfoDTO) {
         Object checkExistQueryResult = skuMapper.getById(id);
         if (checkExistQueryResult == null) {
             throw new CoolSharkServiceException(ResponseCode.NOT_FOUND, "更新SKU失败，尝试访问的数据不存在！");

@@ -1,11 +1,9 @@
 package cn.tedu.mall.front.controller;
 
 
-import cn.tedu.mall.common.restful.JsonPage;
 import cn.tedu.mall.common.restful.JsonResult;
 import cn.tedu.mall.front.service.IFrontProductService;
 import cn.tedu.mall.pojo.product.vo.SkuStandardVO;
-import cn.tedu.mall.pojo.product.vo.SpuListItemVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

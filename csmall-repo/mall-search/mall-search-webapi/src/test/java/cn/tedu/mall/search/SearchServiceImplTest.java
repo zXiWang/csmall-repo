@@ -12,6 +12,8 @@ class SearchServiceImplTest {
 
     @Autowired
     private ISearchService searchService;
+    @Autowired
+    private SpuForElasticRepository spuRepository;
 
     @Test
     void loadSpuByPage() {
@@ -19,18 +21,16 @@ class SearchServiceImplTest {
         System.out.println("ok");
     }
 
-    @Autowired
-    private SpuForElasticRepository spuRepository;
     @Test
-    void showData(){
-        Iterable<SpuForElastic> spus=spuRepository.findAll();
+    void showData() {
+        Iterable<SpuForElastic> spus = spuRepository.findAll();
         spus.forEach(spu -> System.out.println(spu));
     }
 
     @Test
-    void getSpuByTitle(){
+    void getSpuByTitle() {
         // 根据title指定的分词查询数据
-        Iterable<SpuForElastic> spus=
+        Iterable<SpuForElastic> spus =
                 spuRepository.querySpuForElasticsByTitleMatches("华为手机");
         spus.forEach(spu -> System.out.println(spu));
 

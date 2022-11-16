@@ -24,19 +24,19 @@ public class UserSSOUserDetailsService implements UserDetailsService {
         // 获取与用户名匹配的管理员信息
         User user = null;
         try {
-             user = userMapper.findByUsername(username);
+            user = userMapper.findByUsername(username);
         } catch (CoolSharkServiceException e) {
             throw new BadCredentialsException("登录失败，用户名不正确！");
         }
-        if(user==null){
+        if (user == null) {
             return null;
         }
         // 检查管理员是否启用
         if (user.getEnable() != 1) {
             throw new BadCredentialsException("登录失败，用户账号已经被禁用！");
         }
-        UserUserDetails userDetails=new UserUserDetails();
-        BeanUtils.copyProperties(user,userDetails);
+        UserUserDetails userDetails = new UserUserDetails();
+        BeanUtils.copyProperties(user, userDetails);
         // 返回
         return userDetails;
     }

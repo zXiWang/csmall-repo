@@ -17,7 +17,7 @@ public interface UserMapper {
 
     int selectExistByUsernameOrPhoneOrEmail(@Param("value") String value, @Param("type") String type);
 
-    User selectUserById(@Param("userId")Long userId);
+    User selectUserById(@Param("userId") Long userId);
 
-    void updatePasswordById(@Param("userId")Long userId, @Param("newPassword")String encodedNewPassword);
+    void updatePasswordById(@Param("userId") Long userId, @Param("newPassword") String encodedNewPassword);
 }

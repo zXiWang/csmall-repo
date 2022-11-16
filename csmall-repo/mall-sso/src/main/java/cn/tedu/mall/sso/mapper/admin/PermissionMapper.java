@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2021-12-02
  */
 @Qualifier("db1SqlSessionTemplate")
-public interface PermissionMapper{
+public interface PermissionMapper {
 
     /**
      * 根据管理员Id查询管理员的权限列表

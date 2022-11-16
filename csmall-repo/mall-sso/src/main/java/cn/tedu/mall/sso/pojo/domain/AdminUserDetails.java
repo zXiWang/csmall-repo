@@ -13,7 +13,6 @@ import java.util.List;
  * 自定义的jwt保存的userDetails,包含一些除了Userdetails以外的
  * 业务需要的属性数据 包括:
  * userId
- *
  */
 @Data
 public class AdminUserDetails implements Serializable, UserDetails {
@@ -86,6 +85,7 @@ public class AdminUserDetails implements Serializable, UserDetails {
 
     /**
      * 权限
+     *
      * @return
      */
     private List<AdminAutority> authorities;

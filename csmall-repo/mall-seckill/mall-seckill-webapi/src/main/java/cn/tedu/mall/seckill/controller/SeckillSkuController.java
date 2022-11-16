@@ -3,7 +3,6 @@ package cn.tedu.mall.seckill.controller;
 import cn.tedu.mall.common.restful.JsonResult;
 import cn.tedu.mall.pojo.seckill.vo.SeckillSkuVO;
 import cn.tedu.mall.seckill.service.ISeckillSkuService;
-import cn.tedu.mall.seckill.service.ISeckillSpuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -25,13 +24,12 @@ public class SeckillSkuController {
 
     @GetMapping("/list/{spuId}")
     @ApiOperation("根据SpuId查询秒杀Sku列表")
-    @ApiImplicitParam(value = "spuId",name="spuId",example = "2")
+    @ApiImplicitParam(value = "spuId", name = "spuId", example = "2")
     public JsonResult<List<SeckillSkuVO>> listSeckillSkus(
-            @PathVariable Long spuId){
-        List<SeckillSkuVO> list=seckillSkuService.listSeckillSkus(spuId);
+            @PathVariable Long spuId) {
+        List<SeckillSkuVO> list = seckillSkuService.listSeckillSkus(spuId);
         return JsonResult.ok(list);
     }
-
 
 
 }

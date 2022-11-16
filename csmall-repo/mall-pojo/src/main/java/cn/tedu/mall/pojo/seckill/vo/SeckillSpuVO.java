@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * 包含spu所有属性同时
  * 包含start_time end_time 和 展示秒杀价格
  */
-@ApiModel(value = "秒杀展示SPU的VO",description = "一个包含了spu所有属性和起始结束时间和秒杀价的秒杀spu")
+@ApiModel(value = "秒杀展示SPU的VO", description = "一个包含了spu所有属性和起始结束时间和秒杀价的秒杀spu")
 @Data
 public class SeckillSpuVO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -48,7 +48,7 @@ public class SeckillSpuVO implements Serializable {
     /**
      * 秒杀价钱
      */
-    @ApiModelProperty(value="秒杀价(展示在列表)")
+    @ApiModelProperty(value = "秒杀价(展示在列表)")
     private BigDecimal seckillListPrice;
     /**
      * 当前库存（冗余）
@@ -162,26 +162,26 @@ public class SeckillSpuVO implements Serializable {
      * 审核通过时间（冗余）
      */
     @ApiModelProperty(value = "审核通过时间（冗余）")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtCheck;
 
     /**
      * 秒杀开始时间
      */
     @ApiModelProperty(value = "秒杀开始时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime startTime;
 
     /**
      * 秒杀结束时间
      */
     @ApiModelProperty(value = "秒杀结束时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime endTime;
     /**
      * 隐藏的秒杀url地址
      * 如果没有到开始秒杀的时间,这个地址值是空的
      */
-    @ApiModelProperty(value="隐藏的秒杀url地址,如果没有到开始秒杀的时间,这个地址值是空的")
+    @ApiModelProperty(value = "隐藏的秒杀url地址,如果没有到开始秒杀的时间,这个地址值是空的")
     private String url;
 }

@@ -1,6 +1,5 @@
 package cn.tedu.mall.seckill.mapper;
 
-import cn.tedu.mall.pojo.seckill.model.SeckillSku;
 import cn.tedu.mall.pojo.seckill.model.SeckillSpu;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +19,6 @@ public interface SeckillSpuMapper {
 
     // 布隆过滤器用:查询获得所有秒杀商品的SpuId数组
     Long[] findAllSeckillSpuIds();
-
 
 
 }

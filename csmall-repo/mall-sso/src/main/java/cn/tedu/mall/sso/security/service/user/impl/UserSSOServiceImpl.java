@@ -35,6 +35,8 @@ public class UserSSOServiceImpl implements IUserSSOService {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private UserLoginLogMapper userLoginLogMapper;
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;//Bearer
 
     @Override
     public String doLogin(UserLoginDTO userLoginDTO) {
@@ -78,9 +80,6 @@ public class UserSSOServiceImpl implements IUserSSOService {
         return userInfo;
 
     }
-
-    @Value("${jwt.tokenHead}")
-    private String tokenHead;//Bearer
 
     @Override
     public void doLogout(String token) {

@@ -3,36 +3,36 @@
 <mapper namespace="cn.tedu.mall.sso.mapper.user.UserMapper">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.tedu.mall.pojo.ums.model.User">
-        <id column="id" property="id" />
-        <result column="username" property="username" />
-        <result column="password" property="password" />
-        <result column="nickname" property="nickname" />
-        <result column="avatar" property="avatar" />
-        <result column="phone" property="phone" />
-        <result column="email" property="email" />
-        <result column="is_enable" property="enable" />
-        <result column="last_login_ip" property="lastLoginIp" />
-        <result column="login_count" property="loginCount" />
-        <result column="gmt_last_login" property="gmtLastLogin" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="nickname" property="nickname"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="is_enable" property="enable"/>
+        <result column="last_login_ip" property="lastLoginIp"/>
+        <result column="login_count" property="loginCount"/>
+        <result column="gmt_last_login" property="gmtLastLogin"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
         <result column="reward_point" property="rewardPoint"/>
     </resultMap>
     <!-- 标准查询映射结果 -->
     <resultMap id="StandardResultMap" type="cn.tedu.mall.pojo.ums.vo.UserVO">
-        <id column="id" property="id" />
-        <result column="username" property="username" />
-        <result column="nickname" property="nickname" />
-        <result column="avatar" property="avatar" />
-        <result column="phone" property="phone" />
-        <result column="email" property="email" />
-        <result column="reward_point" property="rewardPoint" />
-        <result column="is_enable" property="enable" />
-        <result column="last_login_ip" property="lastLoginIp" />
-        <result column="login_count" property="loginCount" />
-        <result column="gmt_last_login" property="gmtLastLogin" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="nickname" property="nickname"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="reward_point" property="rewardPoint"/>
+        <result column="is_enable" property="enable"/>
+        <result column="last_login_ip" property="lastLoginIp"/>
+        <result column="login_count" property="loginCount"/>
+        <result column="gmt_last_login" property="gmtLastLogin"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
     <sql id="BaseQueryFields">
         <if test="true">
@@ -51,7 +51,8 @@
             gmt_create,
             gmt_modified
         </if>
-    </sql>    <sql id="StandardQueryFields">
+    </sql>
+    <sql id="StandardQueryFields">
         <if test="true">
             id,
             username,
@@ -70,19 +71,19 @@
     </sql>
     <select id="findByUsername" resultMap="BaseResultMap">
         select
-            <include refid="BaseQueryFields"/>
+        <include refid="BaseQueryFields"/>
         from
-            ums_user
+        ums_user
         where
-            username=#{username}
+        username=#{username}
     </select>
     <select id="findById" resultMap="StandardResultMap">
         select
-            <include refid="StandardQueryFields"/>
+        <include refid="StandardQueryFields"/>
         from
-            ums_user
+        ums_user
         where
-            id=#{id}
+        id=#{id}
     </select>
 
 </mapper>

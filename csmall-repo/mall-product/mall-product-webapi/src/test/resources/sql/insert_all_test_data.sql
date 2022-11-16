@@ -96,9 +96,12 @@ values (1, 'http://www.tedu.cn/1.jpg', 0, 500, 300),
        (5, 'http://www.tedu.cn/10.jpg', 0, 500, 300);
 
 insert into pms_spu (id, name, type_number, title, list_price, stock, stock_threshold, unit, brand_id, brand_name,
-                     category_id, category_name, album_id, pictures, is_published, is_new_arrival, is_recommend, is_checked)
-values (1, '小米手机12', 'MI20121201', '年度爆款小米手机12高端旗舰机', 3899, 10000, 100, '部', 1, '小米', 1, '手机', 1, '{JSON...}', 1, 1, 1, 0),
-       (2, '小米手机12 Pro', 'MI20121202', '年度爆款小米手机12 Pro顶级旗舰机', 4399, 10000, 100, '部', 1, '小米', 1, '手机', 1, '{JSON...}', 1, 1, 1, 1),
+                     category_id, category_name, album_id, pictures, is_published, is_new_arrival, is_recommend,
+                     is_checked)
+values (1, '小米手机12', 'MI20121201', '年度爆款小米手机12高端旗舰机', 3899, 10000, 100, '部', 1, '小米', 1, '手机', 1, '{JSON...}', 1, 1, 1,
+        0),
+       (2, '小米手机12 Pro', 'MI20121202', '年度爆款小米手机12 Pro顶级旗舰机', 4399, 10000, 100, '部', 1, '小米', 1, '手机', 1, '{JSON...}',
+        1, 1, 1, 1),
        (3, '华为手机Mate50', 'M20121201', '年度爆款华为手机Mate50高端旗舰机', 4899, 10000, 100, '部', 2, '华为', 1, '手机', 1, '{JSON...}', 1,
         1, 1, 1),
        (4, '华为手机P50', 'HW20121202', '年度爆款华为手机P50高端旗舰机', 4399, 10000, 100, '部', 2, '华为', 1, '手机', 1, '{JSON...}', 1, 1,

@@ -31,6 +31,27 @@ public class PictureUploadUtils {
     @Value("${custom.file-upload.resource-host}")
     private String fileUploadResourceHost;
 
+    public static String generatorPath(String prefix) {
+        String baseStr = UUID.randomUUID().toString();//一般生成36个字符的字符串
+        System.out.println(baseStr);
+        StringBuffer pathBuilder = new StringBuffer();
+        pathBuilder.append("/");
+        pathBuilder.append(prefix);
+        pathBuilder.append("/");
+        for (int i = 0; i < 8; i++) {
+            char charStr = 0;//这可能是一个空的字符符号
+            if (i > (baseStr.length() - 1)) {
+                //这时已经超过字符串长度,会抛异常outofbound
+                pathBuilder.append("0/");
+                continue;
+            }
+            charStr = baseStr.charAt(i);
+            pathBuilder.append(charStr);
+            pathBuilder.append("/");
+        }
+        return pathBuilder.toString();
+    }
+
     public List<PictureSimpleVO> uploadPictures(PictureUploadBatchDTO pictureUploadBatchDTO) {
         List<PictureSimpleVO> pictureSimpleVOList = new ArrayList<>();
         MultipartFile[] pictures = pictureUploadBatchDTO.getPictures();
@@ -132,27 +153,6 @@ public class PictureUploadUtils {
         String url = fileUploadResourceHost + path + picNewName;
         pictureVO.setUrl(url);
         return pictureVO;
-    }
-
-    public static String generatorPath(String prefix) {
-        String baseStr = UUID.randomUUID().toString();//一般生成36个字符的字符串
-        System.out.println(baseStr);
-        StringBuffer pathBuilder = new StringBuffer();
-        pathBuilder.append("/");
-        pathBuilder.append(prefix);
-        pathBuilder.append("/");
-        for (int i = 0; i < 8; i++) {
-            char charStr = 0;//这可能是一个空的字符符号
-            if (i > (baseStr.length() - 1)) {
-                //这时已经超过字符串长度,会抛异常outofbound
-                pathBuilder.append("0/");
-                continue;
-            }
-            charStr = baseStr.charAt(i);
-            pathBuilder.append(charStr);
-            pathBuilder.append("/");
-        }
-        return pathBuilder.toString();
     }
 
 

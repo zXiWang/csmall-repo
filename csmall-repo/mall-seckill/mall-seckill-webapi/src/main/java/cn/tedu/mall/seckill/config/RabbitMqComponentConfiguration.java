@@ -15,19 +15,22 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitMqComponentConfiguration {
-    public static final String SECKILL_EX="seckill_ex";
-    public static final String SECKILL_QUEUE="seckill_queue";
-    public static final String SECKILL_RK="seckill_routing_key";
+    public static final String SECKILL_EX = "seckill_ex";
+    public static final String SECKILL_QUEUE = "seckill_queue";
+    public static final String SECKILL_RK = "seckill_routing_key";
+
     @Bean
-    public Queue seckillQueue(){
+    public Queue seckillQueue() {
         return new Queue(SECKILL_QUEUE);
     }
+
     @Bean
-    public DirectExchange seckillExchange(){
+    public DirectExchange seckillExchange() {
         return new DirectExchange(SECKILL_EX);
     }
+
     @Bean
-    public Binding seckillBinding(){
+    public Binding seckillBinding() {
         return BindingBuilder.bind(seckillQueue()).to(seckillExchange()).with(SECKILL_RK);
     }
 }

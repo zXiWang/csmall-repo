@@ -8,7 +8,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@ApiModel(value="前台sku 的vo对象")
+@ApiModel(value = "前台sku 的vo对象")
 @Data
 public class FrontSkuSimpleVO implements Serializable {
     /**

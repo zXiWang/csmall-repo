@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@ApiModel(value="前台SPU DETAIL")
+@ApiModel(value = "前台SPU DETAIL")
 @Data
 public class FrontSpuDetailVO implements Serializable {
     private static final long serialVersionUID = 1L;

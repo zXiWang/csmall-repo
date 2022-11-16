@@ -10,7 +10,9 @@
 
     <!-- int countByCategoryId(Long categoryId); -->
     <select id="countByCategoryId" resultType="int">
-        SELECT COUNT(*) FROM pms_category_attribute_template WHERE category_id=#{categoryId}
+        SELECT COUNT(*)
+        FROM pms_category_attribute_template
+        WHERE category_id = #{categoryId}
     </select>
 
 </mapper>

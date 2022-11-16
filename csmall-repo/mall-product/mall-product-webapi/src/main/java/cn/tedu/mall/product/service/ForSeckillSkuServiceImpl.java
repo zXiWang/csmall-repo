@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ForSeckillSkuServiceImpl implements IForSeckillSkuService {
     @Autowired
     private SkuMapper skuMapper;
+
     @Override
     public SkuStandardVO getById(Long skuId) {
         return skuMapper.getById(skuId);

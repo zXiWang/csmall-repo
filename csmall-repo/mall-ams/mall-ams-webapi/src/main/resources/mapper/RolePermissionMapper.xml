@@ -4,18 +4,15 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.tedu.mall.pojo.admin.model.RolePermission">
-        <id column="id" property="id" />
-        <result column="role_id" property="roleId" />
-        <result column="permission_id" property="permissionId" />
-        <result column="gmt_create" property="gmtCreate" />
-        <result column="gmt_modified" property="gmtModified" />
+        <id column="id" property="id"/>
+        <result column="role_id" property="roleId"/>
+        <result column="permission_id" property="permissionId"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
     <select id="selectExistByPermissionId" resultType="int">
-        select
-            count(*)
-        from
-            ams_role_permission
-        where
-            permission_id=#{permissionId}
+        select count(*)
+        from ams_role_permission
+        where permission_id = #{permissionId}
     </select>
 </mapper>

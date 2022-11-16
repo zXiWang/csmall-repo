@@ -8,6 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableDubbo
 public class MallSeckillWebApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MallSeckillWebApiApplication.class,args);
+        SpringApplication.run(MallSeckillWebApiApplication.class, args);
     }
 }

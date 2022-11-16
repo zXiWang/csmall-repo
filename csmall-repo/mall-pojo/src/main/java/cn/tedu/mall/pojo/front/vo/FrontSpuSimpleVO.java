@@ -178,7 +178,7 @@ public class FrontSpuSimpleVO implements Serializable {
      * 审核通过时间（冗余）
      */
     @ApiModelProperty(value = "审核通过时间（冗余）")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtCheck;
 
 }

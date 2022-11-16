@@ -6,10 +6,10 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@ApiModel(value="角色编辑DTO")
+@ApiModel(value = "角色编辑DTO")
 @Data
 public class RoleUpdateDTO implements Serializable {
-    @ApiModelProperty(value="角色id",required = true)
+    @ApiModelProperty(value = "角色id", required = true)
     private Long id;
     /**
      * 名称

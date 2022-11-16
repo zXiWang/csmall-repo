@@ -8,7 +8,7 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@ApiModel(value="前台用户登录DTO")
+@ApiModel(value = "前台用户登录DTO")
 @Data
 public class UserLoginDTO implements RegExpressions {
     /**
@@ -31,10 +31,10 @@ public class UserLoginDTO implements RegExpressions {
 
     @ApiModelProperty(value = "state随机号防止csrf攻击", name = "state", example = "state")
     private String state;
-    @ApiModelProperty(value = "客户端登录ip,后台填写", name = "ip", example = "127.0.0.1",required = false)
+    @ApiModelProperty(value = "客户端登录ip,后台填写", name = "ip", example = "127.0.0.1", required = false)
     private String ip;
 
-    @ApiModelProperty(value = "用户代理,后台填写", name = "userAgent", example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15",required = false)
+    @ApiModelProperty(value = "用户代理,后台填写", name = "userAgent", example = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15", required = false)
     private String userAgent;
 
 }

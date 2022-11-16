@@ -12,6 +12,6 @@ import org.springframework.context.annotation.Import;
 @EnableDubbo
 public class MallSearchWebApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MallSearchWebApiApplication.class,args);
+        SpringApplication.run(MallSearchWebApiApplication.class, args);
     }
 }

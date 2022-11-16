@@ -8,6 +8,6 @@ import org.apache.ibatis.annotations.Param;
  * @author tedu.cn
  * @since 2021-12-02
  */
-public interface RolePermissionMapper{
-    int selectExistByPermissionId(@Param("permissionId")Long id);
+public interface RolePermissionMapper {
+    int selectExistByPermissionId(@Param("permissionId") Long id);
 }

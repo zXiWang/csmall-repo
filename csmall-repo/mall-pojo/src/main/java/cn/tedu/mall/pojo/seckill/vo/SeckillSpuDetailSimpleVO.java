@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@ApiModel(value="秒杀商品SPU详情VO")
+@ApiModel(value = "秒杀商品SPU详情VO")
 @Data
 public class SeckillSpuDetailSimpleVO implements Serializable {
     private static final long serialVersionUID = 1L;

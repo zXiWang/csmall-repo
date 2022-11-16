@@ -11,7 +11,7 @@ public class TokenVO {
     @ApiModelProperty(value = "JWT Token值")
     private String tokenValue;
 
-    @ApiModelProperty(value = "携带Token的头",example = "Bearer")
+    @ApiModelProperty(value = "携带Token的头", example = "Bearer")
     private String tokenHeader;
 
 }

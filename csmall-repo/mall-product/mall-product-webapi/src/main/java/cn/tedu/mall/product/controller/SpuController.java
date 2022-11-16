@@ -5,7 +5,6 @@ import cn.tedu.mall.common.restful.JsonResult;
 import cn.tedu.mall.pojo.product.dto.SpuAddNewDTO;
 import cn.tedu.mall.pojo.product.dto.SpuUpdateDTO;
 import cn.tedu.mall.pojo.product.query.SpuQuery;
-import cn.tedu.mall.pojo.product.vo.AlbumStandardVO;
 import cn.tedu.mall.pojo.product.vo.SpuListItemVO;
 import cn.tedu.mall.pojo.product.vo.SpuStandardVO;
 import cn.tedu.mall.product.constant.WebConst;
@@ -53,7 +52,7 @@ public class SpuController {
     @ApiOperationSupport(order = 30)
     @ApiOperation(value = "更新SPU", notes = "需要商品后台【写】权限：/pms/product/update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path",required = true, dataType = "long")
+            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path", required = true, dataType = "long")
     })
     @PreAuthorize("hasAuthority('/pms/product/update')")
     @PostMapping("/{id:[0-9]+}/update")
@@ -68,7 +67,7 @@ public class SpuController {
     @ApiOperationSupport(order = 31)
     @ApiOperation(value = "通过审核SPU", notes = "需要商品后台【写】权限：/pms/product/update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path",required = true, dataType = "long")
+            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path", required = true, dataType = "long")
     })
     @PreAuthorize("hasAuthority('/pms/product/update')")
     @PostMapping("/{id:[0-9]+}/checked-status/pass")
@@ -83,7 +82,7 @@ public class SpuController {
     @ApiOperationSupport(order = 32)
     @ApiOperation(value = "同步SPU库存值", notes = "用于增减SKU或SKU的库存变化后SPU库存未更新的情况，需要商品后台【写】权限：/pms/product/update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path",required = true, dataType = "long")
+            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path", required = true, dataType = "long")
     })
     @PreAuthorize("hasAuthority('/pms/product/update')")
     @PostMapping("/{id:[0-9]+}/stock/synchronise")
@@ -98,7 +97,7 @@ public class SpuController {
     @ApiOperationSupport(order = 33)
     @ApiOperation(value = "同步SPU价格", notes = "用于增减SKU或SKU的变化变化后SPU价格未更新的情况，需要商品后台【写】权限：/pms/product/update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path", required = true,dataType = "long")
+            @ApiImplicitParam(name = "id", value = "SPU id", paramType = "path", required = true, dataType = "long")
     })
     @PreAuthorize("hasAuthority('/pms/product/update')")
     @PostMapping("/{id:[0-9]+}/price/synchronise")

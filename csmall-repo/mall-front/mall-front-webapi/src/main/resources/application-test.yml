@@ -1,6 +1,6 @@
 my:
   server:
-    addr: localhost
+    addr: 176.13.14.106
 # 日志显示级别
 logging:
   level:

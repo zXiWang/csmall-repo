@@ -13,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,37 +25,40 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/ums/userDetail")
-@Api(tags="用户详情模块")
+@Api(tags = "用户详情模块")
 public class UserDetailController {
     @Autowired
     private IUserDetailService userDetailService;
+
     /**
      * 新增用户详情
      */
-    @ApiOperation(value="注册后第一次编辑新增用户详情")
+    @ApiOperation(value = "注册后第一次编辑新增用户详情")
     @PostMapping("/add")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult addUserDetail(UserDetailAddDTO userDetailAddDTO){
+    public JsonResult addUserDetail(UserDetailAddDTO userDetailAddDTO) {
         userDetailService.addUserDetail(userDetailAddDTO);
         return JsonResult.ok();
     }
+
     /**
      * 回显用户详情，包含id值
      */
-    @ApiOperation(value="查询当前用户的详情信息")
+    @ApiOperation(value = "查询当前用户的详情信息")
     @GetMapping("/show")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult<UserDetailStandardVO> getUserDetails(){
-        UserDetailStandardVO userDetailStandardVO=userDetailService.getUserDetails();
+    public JsonResult<UserDetailStandardVO> getUserDetails() {
+        UserDetailStandardVO userDetailStandardVO = userDetailService.getUserDetails();
         return JsonResult.ok(userDetailStandardVO);
     }
+
     /**
      * 修改用户详情
      */
-    @ApiOperation(value="修改用户详情")
+    @ApiOperation(value = "修改用户详情")
     @PostMapping("/modified")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult modifiedUserDetail(UserDetailUpdateDTO userDetailUpdateDTO){
+    public JsonResult modifiedUserDetail(UserDetailUpdateDTO userDetailUpdateDTO) {
         userDetailService.updateUserDetail(userDetailUpdateDTO);
         return JsonResult.ok();
     }

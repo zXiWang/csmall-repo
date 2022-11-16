@@ -8,6 +8,6 @@ package cn.tedu.mall.order.service;
  * @author tedu.cn
  * @since 2022-02-16
  */
-public interface IOmsOrderItemService{
+public interface IOmsOrderItemService {
 
 }

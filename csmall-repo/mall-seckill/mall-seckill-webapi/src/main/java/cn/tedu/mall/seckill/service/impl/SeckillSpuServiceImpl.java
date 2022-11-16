@@ -11,6 +11,7 @@ import cn.tedu.mall.pojo.seckill.vo.SeckillSpuVO;
 import cn.tedu.mall.product.service.seckill.IForSeckillSpuService;
 import cn.tedu.mall.seckill.mapper.SeckillSpuMapper;
 import cn.tedu.mall.seckill.service.ISeckillSpuService;
+import cn.tedu.mall.seckill.utils.RedisBloomUtils;
 import cn.tedu.mall.seckill.utils.SeckillCacheUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -22,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +32,22 @@ import java.util.concurrent.TimeUnit;
 @Service
 @Slf4j
 public class SeckillSpuServiceImpl implements ISeckillSpuService {
+    // 当前项目中没有定义spuDetail对应Redis的key的常量
+    // 要么自己去添加, 要么这里定义一个   PREFIX是"前缀"的意思
+    public static final String
+            SECKILL_SPU_DETAIL_VO_PREFIX = "seckill:spu:detail:vo:";
     //  装配查询秒杀Spu列表的Mapper
     @Autowired
     private SeckillSpuMapper seckillSpuMapper;
-
     // 查询方法的返回值泛型为SeckillSpuVO,其中包含很多普通spu表中的信息
     // 所以我们还要在代码中Dubbo调用根据spuId查询普通spu信息的方法,还是product模块
     @DubboReference
     private IForSeckillSpuService dubboSeckillSpuService;
+    @Autowired
+    private RedisBloomUtils redisBloomUtils;
+    // 装配操作Redis的对象
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     // 分页查询秒杀商品信息
     // 这个方法的返回值泛型是SeckillSpuVO,其中包含了常规spu信息和秒杀spu信息
@@ -76,9 +86,19 @@ public class SeckillSpuServiceImpl implements ISeckillSpuService {
     // 根据spuId查询spu详情(返回值包含常规信息和秒杀信息已经随机码)
     @Override
     public SeckillSpuVO getSeckillSpu(Long spuId) {
-        // 在最终完整版的代码中,要在这里添加布隆过滤器的判断
+        // 要在这里添加布隆过滤器的判断
         // 执行布隆过滤器判断spuId是否存在,如果不存在直接抛出异常
-
+        // 获得布隆过滤器的key
+        String bloomTodayKey = SeckillCacheUtils
+                .getBloomFilterKey(LocalDate.now());
+        log.info("当前批次商品布隆过滤器的key为:{}", bloomTodayKey);
+        // 判断要访问的spuId是否在布隆过滤器中
+        if (!redisBloomUtils.bfexists(bloomTodayKey, spuId + "")) {
+            // 进入这个if表示当前spuId不在布隆过滤器中
+            // 为防止缓存穿透,直接抛出异常,终止成希
+            throw new CoolSharkServiceException(ResponseCode.NOT_FOUND,
+                    "您访问的商品不存在!(布隆过滤器生效)");
+        }
         // 检查spu信息是否已经在Redis中,还是先定Redis的key
         String seckillSpuKey = SeckillCacheUtils.getSeckillSpuVOKey(spuId);
         // 先声明一个当前方法的返回值类型对象为null
@@ -137,15 +157,6 @@ public class SeckillSpuServiceImpl implements ISeckillSpuService {
         // 返回的是seckillSpuVO,实际上它是秒杀spu信息,常规spu信息和url的和
         return seckillSpuVO;
     }
-
-    // 装配操作Redis的对象
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    // 当前项目中没有定义spuDetail对应Redis的key的常量
-    // 要么自己去添加, 要么这里定义一个   PREFIX是"前缀"的意思
-    public static final String
-            SECKILL_SPU_DETAIL_VO_PREFIX = "seckill:spu:detail:vo:";
 
     // 查询秒杀spu信息的spuDetail
     @Override

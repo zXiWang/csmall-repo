@@ -3,7 +3,6 @@ package cn.tedu.mall.pojo.ums.model;
 
 import lombok.Data;
 
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 

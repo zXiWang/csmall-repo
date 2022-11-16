@@ -13,7 +13,7 @@ public interface SeckillSkuMapper {
     List<SeckillSku> findSeckillSkusBySpuId(Long spuId);
 
     // 根据skuId减少库存的方法
-    int updateReduceStockBySkuId(@Param("skuId") Long  skuId,
+    int updateReduceStockBySkuId(@Param("skuId") Long skuId,
                                  @Param("quantity") Integer quantity);
 
 

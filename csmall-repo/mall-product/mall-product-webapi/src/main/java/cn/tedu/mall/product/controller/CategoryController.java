@@ -52,7 +52,7 @@ public class CategoryController {
     @ApiOperationSupport(order = 20)
     @ApiOperation(value = "删除类别", notes = "需要商品后台【写】权限：/pms/product/update")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "类别id", paramType = "path", required = true, dataType = "long" )
+            @ApiImplicitParam(name = "id", value = "类别id", paramType = "path", required = true, dataType = "long")
     })
     @PreAuthorize("hasAuthority('/pms/product/update')")
     @PostMapping("/{id:[0-9]+}/delete")

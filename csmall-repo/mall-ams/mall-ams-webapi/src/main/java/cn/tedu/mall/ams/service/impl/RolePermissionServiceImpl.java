@@ -1,8 +1,6 @@
 package cn.tedu.mall.ams.service.impl;
 
-import cn.tedu.mall.ams.mapper.RolePermissionMapper;
 import cn.tedu.mall.ams.service.IRolePermissionService;
-import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.stereotype.Service;
 
 /**

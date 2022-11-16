@@ -11,7 +11,7 @@ import java.util.List;
  * @author tedu.cn
  * @since 2021-12-02
  */
-public interface RoleMapper{
+public interface RoleMapper {
     int selectExistRoleById(Long roleId);
 
     List<RoleVO> selectRoles();

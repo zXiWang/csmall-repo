@@ -14,11 +14,12 @@ import java.io.IOException;
 
 @Component
 public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint {
-    private static final ObjectMapper objectMapper=new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         //在这里返回一个包含着错误信息的对象数据
-        JsonResult jsonResult=JsonResult.failed(ResponseCode.UNAUTHORIZED,"您没有登录！");
+        JsonResult jsonResult = JsonResult.failed(ResponseCode.UNAUTHORIZED, "您没有登录！");
         httpServletResponse.setContentType("application/json;charset=utf-8");
         httpServletResponse.getWriter().write(objectMapper.writeValueAsString(jsonResult));
         httpServletResponse.flushBuffer();

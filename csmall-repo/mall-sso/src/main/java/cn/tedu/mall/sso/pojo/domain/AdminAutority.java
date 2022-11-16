@@ -1,8 +1,5 @@
 package cn.tedu.mall.sso.pojo.domain;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -43,15 +40,17 @@ public class AdminAutority implements Serializable, GrantedAuthority {
      */
     private LocalDateTime gmtModified;
 
-    /**
-     * 写入数据
-     * @return
-     */
-    private void setAuthority(String authority){
-        this.value=authority;
-    }
     @Override
     public String getAuthority() {
         return value;
+    }
+
+    /**
+     * 写入数据
+     *
+     * @return
+     */
+    private void setAuthority(String authority) {
+        this.value = authority;
     }
 }

@@ -27,20 +27,21 @@ import org.springframework.stereotype.Service;
 public class UserDetailServiceImpl implements IUserDetailService {
     @Autowired
     private UserDetailMapper userDetailMapper;
+
     @Override
     public void addUserDetail(UserDetailAddDTO userDetailAddDTO) {
         Long userId = getUserId();
-        UserDetail userDetail=new UserDetail();
+        UserDetail userDetail = new UserDetail();
         //查询已存在
 
         UserDetailStandardVO userDetailStandardVO = userDetailMapper.selectUserDetailByUserId(userId);
-        if(userDetailStandardVO==null){
+        if (userDetailStandardVO == null) {
             //转化对象
-            BeanUtils.copyProperties(userDetailAddDTO,userDetail);
+            BeanUtils.copyProperties(userDetailAddDTO, userDetail);
             userDetail.setUserId(userId);
             userDetailMapper.insertUserDetail(userDetail);
-        }else{
-            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST,"用户详情已经存在请进行修改操作");
+        } else {
+            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST, "用户详情已经存在请进行修改操作");
         }
 
 
@@ -48,42 +49,43 @@ public class UserDetailServiceImpl implements IUserDetailService {
 
     @Override
     public UserDetailStandardVO getUserDetails() {
-        Long userId=getUserId();
-        UserDetailStandardVO userDetailStandardVO=userDetailMapper.selectUserDetailByUserId(userId);
+        Long userId = getUserId();
+        UserDetailStandardVO userDetailStandardVO = userDetailMapper.selectUserDetailByUserId(userId);
         return userDetailStandardVO;
     }
 
     @Override
     public void updateUserDetail(UserDetailUpdateDTO userDetailUpdateDTO) {
         Long userId = getUserId();
-        UserDetail userDetail=new UserDetail();
+        UserDetail userDetail = new UserDetail();
         //查询已存在
         UserDetailStandardVO userDetailStandardVO = userDetailMapper.selectUserDetailById(userDetailUpdateDTO.getId());
-        if(userDetailStandardVO!=null){
+        if (userDetailStandardVO != null) {
             Long userId1 = userDetailStandardVO.getUserId();
-            if(userId!=userId1){
-                throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST,"您修改的用户详情不属于您");
+            if (userId != userId1) {
+                throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST, "您修改的用户详情不属于您");
             }
-            BeanUtils.copyProperties(userDetailUpdateDTO,userDetail);
+            BeanUtils.copyProperties(userDetailUpdateDTO, userDetail);
             userDetailMapper.updateUserDetailById(userDetail);
-        }else{
-            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST,"用户详情不存在，请新增用户详情");
+        } else {
+            throw new CoolSharkServiceException(ResponseCode.BAD_REQUEST, "用户详情不存在，请新增用户详情");
         }
     }
 
     //TODO 可以和购物车业务层方法合并简化
-    public CsmallAuthenticationInfo getUserInfo(){
+    public CsmallAuthenticationInfo getUserInfo() {
         //从security环境获取username,先拿到authentication
         UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         //如果不是空的可以调用dubbo远程微服务获取adminVO
-        if(authentication!=null){
-            CsmallAuthenticationInfo csmallAuthenticationInfo=(CsmallAuthenticationInfo)authentication.getCredentials();
+        if (authentication != null) {
+            CsmallAuthenticationInfo csmallAuthenticationInfo = (CsmallAuthenticationInfo) authentication.getCredentials();
             return csmallAuthenticationInfo;
-        }else{
-            throw new CoolSharkServiceException(ResponseCode.UNAUTHORIZED,"没有登录者信息");
+        } else {
+            throw new CoolSharkServiceException(ResponseCode.UNAUTHORIZED, "没有登录者信息");
         }
     }
-    public Long getUserId(){
+
+    public Long getUserId() {
         CsmallAuthenticationInfo userInfo = getUserInfo();
         return userInfo.getId();
     }

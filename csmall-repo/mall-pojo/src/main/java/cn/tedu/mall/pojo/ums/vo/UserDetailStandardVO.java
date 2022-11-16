@@ -1,12 +1,12 @@
 package cn.tedu.mall.pojo.ums.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 @Data
 public class UserDetailStandardVO implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class UserDetailStandardVO implements Serializable {
     /**
      * 生日
      */
-    @JsonFormat(pattern="yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dayOfBirth;
 
     /**
@@ -65,12 +65,12 @@ public class UserDetailStandardVO implements Serializable {
     /**
      * 数据创建时间
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtCreate;
 
     /**
      * 数据最后修改时间
      */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtModified;
 }

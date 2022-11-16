@@ -20,69 +20,68 @@ import java.util.List;
  * @since 2022-02-16
  */
 @Data
-@ApiModel(value="")
+@ApiModel(value = "")
 public class OrderListVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value="订单id")
+    @ApiModelProperty(value = "订单id")
     private Long id;
 
     /**
      * 订单编号
      */
-    @ApiModelProperty(value="订单编号")
+    @ApiModelProperty(value = "订单编号")
     private String sn;
 
     /**
      * 用户id
      */
-    @ApiModelProperty(value="用户id")
+    @ApiModelProperty(value = "用户id")
     private Long userId;
 
     /**
      * 联系人姓名（冗余，历史）
      */
-    @ApiModelProperty(value="联系人姓名")
+    @ApiModelProperty(value = "联系人姓名")
     private String contactName;
 
     /**
      * 状态，0=未支付，1=已关闭（超时未支付），2=已取消，3=已支付，4=已签收，5=已拒收，6=退款处理中，7=已退款
      */
-    @ApiModelProperty(value="状态，0=未支付，1=已关闭（超时未支付），2=已取消，3=已支付，4=已签收，5=已拒收，6=退款处理中，7=已退款",example = "0")
+    @ApiModelProperty(value = "状态，0=未支付，1=已关闭（超时未支付），2=已取消，3=已支付，4=已签收，5=已拒收，6=退款处理中，7=已退款", example = "0")
     private Integer state;
 
     /**
      * 实际支付
      */
-    @ApiModelProperty(value="实际支付")
+    @ApiModelProperty(value = "实际支付")
     private BigDecimal amountOfActualPay;
-
 
 
     /**
      * 下单时间
      */
-    @ApiModelProperty(value="下单时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @ApiModelProperty(value = "下单时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtOrder;
     /**
      * 创建时间
      */
-    @ApiModelProperty(value="创建订单时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @ApiModelProperty(value = "创建订单时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtCreate;
     /**
      * 支付时间
      */
-    @ApiModelProperty(value="支付时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @ApiModelProperty(value = "支付时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtPay;
     /**
      * 修改时间
      */
-    @ApiModelProperty(value="修改时间")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @ApiModelProperty(value = "修改时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime gmtModified;
 
     /**

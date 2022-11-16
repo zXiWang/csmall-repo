@@ -7,5 +7,5 @@ package cn.tedu.mall.ums.mapper;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface RewardPointLogMapper{
+public interface RewardPointLogMapper {
 }

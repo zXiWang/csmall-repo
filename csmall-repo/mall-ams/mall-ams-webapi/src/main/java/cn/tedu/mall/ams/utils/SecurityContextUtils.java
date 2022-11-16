@@ -29,11 +29,13 @@ public class SecurityContextUtils {
         CsmallAuthenticationInfo userInfo = getUserInfo();
         return userInfo.getId();
     }
-    public static String getUsername(){
+
+    public static String getUsername() {
         CsmallAuthenticationInfo userInfo = getUserInfo();
         return userInfo.getUsername();
     }
-    public static String getUserType(){
+
+    public static String getUserType() {
         CsmallAuthenticationInfo userInfo = getUserInfo();
         return userInfo.getUserType();
     }

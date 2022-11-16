@@ -2,8 +2,8 @@ package cn.tedu.mall.product.service;
 
 import cn.tedu.mall.common.exception.CoolSharkServiceException;
 import cn.tedu.mall.common.restful.ResponseCode;
-import cn.tedu.mall.product.mapper.BrandCategoryMapper;
 import cn.tedu.mall.pojo.product.model.BrandCategory;
+import cn.tedu.mall.product.mapper.BrandCategoryMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

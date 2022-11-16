@@ -83,9 +83,10 @@ public interface SkuMapper {
 
     /**
      * 根据skuId 更新对应库存
+     *
      * @param skuId
      * @param quantity
      * @return
      */
-    int updateStockById(@Param("id")Long skuId, @Param("stock")Integer quantity);
+    int updateStockById(@Param("id") Long skuId, @Param("stock") Integer quantity);
 }

@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 # 程序执行的根路径
 PROJ_DIR=./target
 

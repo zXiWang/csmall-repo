@@ -9,11 +9,12 @@ import java.util.List;
 
 /**
  * 前台分类树封装分类实体
+ *
  * @author xiaoxuwei
  * @version 1.0.0
  */
 @Data
-@ApiModel(value="商品分类树实体")
+@ApiModel(value = "商品分类树实体")
 public class FrontCategoryEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

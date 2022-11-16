@@ -91,7 +91,7 @@
     </insert>
 
     <update id="updateOrderById">
-        update  oms_order
+        update oms_order
         <set>
             <if test="contactName!=null">
                 contact_name=#{contactName},

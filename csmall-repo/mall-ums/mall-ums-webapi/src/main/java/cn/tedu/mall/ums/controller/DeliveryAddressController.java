@@ -16,7 +16,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -33,47 +32,51 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeliveryAddressController {
     @Autowired
     private IDeliveryAddressService deliveryAddressService;
+
     /**
      * 根据userId查询地址
      */
-    @ApiOperation(value="根据登录用户查询管理地址列表")
+    @ApiOperation(value = "根据登录用户查询管理地址列表")
     @GetMapping("list")
     @PreAuthorize("hasRole('ROLE_user')")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "页码", dataType = "int"),
             @ApiImplicitParam(name = "pageSize", value = "每页记录数", dataType = "int")
     })
-    public JsonResult<JsonPage<DeliveryAddressStandardVO>> listAddress(Integer page, Integer pageSize){
-        JsonPage<DeliveryAddressStandardVO> addresses=deliveryAddressService.listAddress(page,pageSize);
+    public JsonResult<JsonPage<DeliveryAddressStandardVO>> listAddress(Integer page, Integer pageSize) {
+        JsonPage<DeliveryAddressStandardVO> addresses = deliveryAddressService.listAddress(page, pageSize);
         return JsonResult.ok(addresses);
     }
+
     /**
      * 新增地址
      */
-    @ApiOperation(value="新增用户邮寄地址")
+    @ApiOperation(value = "新增用户邮寄地址")
     @PostMapping("/add")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult addAddress(DeliveryAddressAddDTO deliveryAddressAddDTO){
+    public JsonResult addAddress(DeliveryAddressAddDTO deliveryAddressAddDTO) {
         deliveryAddressService.addAddress(deliveryAddressAddDTO);
         return JsonResult.ok();
     }
+
     /**
      * 编辑地址
      */
-    @ApiOperation(value="对已有地址进行编辑")
+    @ApiOperation(value = "对已有地址进行编辑")
     @PostMapping("/edit")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult editAddress(DeliveryAddressEditDTO deliveryAddressEditDTO){
+    public JsonResult editAddress(DeliveryAddressEditDTO deliveryAddressEditDTO) {
         deliveryAddressService.editAddress(deliveryAddressEditDTO);
         return JsonResult.ok();
     }
+
     /**
      * 删除已有地址
      */
-    @ApiOperation(value="根据id删除已有地址")
+    @ApiOperation(value = "根据id删除已有地址")
     @PostMapping("/delete")
     @PreAuthorize("hasRole('ROLE_user')")
-    public JsonResult deleteAddress(Long id){
+    public JsonResult deleteAddress(Long id) {
         deliveryAddressService.deleteAddress(id);
         return JsonResult.ok();
     }

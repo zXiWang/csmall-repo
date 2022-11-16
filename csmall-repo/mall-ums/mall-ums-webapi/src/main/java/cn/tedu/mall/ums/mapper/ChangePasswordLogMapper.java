@@ -8,6 +8,6 @@ import cn.tedu.mall.pojo.ums.model.ChangePasswordLog;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface ChangePasswordLogMapper{
+public interface ChangePasswordLogMapper {
     void insertChangePasswordLog(ChangePasswordLog changePasswordLog);
 }

@@ -33,42 +33,40 @@ public class SeckillController {
 
     @PostMapping("/{randCode}")
     @ApiOperation("验证随机码并提交秒杀订单")
-    @ApiImplicitParam(value = "随机码",name="randCode",required = true)
+    @ApiImplicitParam(value = "随机码", name = "randCode", required = true)
     @PreAuthorize("hasRole('user')")
     @SentinelResource(value = "seckill",
-          blockHandlerClass = SeckillBlockHandler.class,blockHandler = "seckillBlock",
-          fallbackClass = SeckillFallBack.class,fallback = "seckillFallback")
+            blockHandlerClass = SeckillBlockHandler.class, blockHandler = "seckillBlock",
+            fallbackClass = SeckillFallBack.class, fallback = "seckillFallback")
     public JsonResult<SeckillCommitVO> commitSeckill(
             @PathVariable String randCode,
-            @Validated SeckillOrderAddDTO seckillOrderAddDTO){
+            @Validated SeckillOrderAddDTO seckillOrderAddDTO) {
         // 获取spuId
-        Long spuId=seckillOrderAddDTO.getSpuId();
+        Long spuId = seckillOrderAddDTO.getSpuId();
         // 声明根据spuId获取随机码的Key
-        String randCodeKey= SeckillCacheUtils.getRandCodeKey(spuId);
+        String randCodeKey = SeckillCacheUtils.getRandCodeKey(spuId);
         // 判断Redis中是否有这个key
-        if(redisTemplate.hasKey(randCodeKey)){
+        if (redisTemplate.hasKey(randCodeKey)) {
             // redis中有这个key,将它的value(随机码)取出
-            String redisRandCode=redisTemplate.boundValueOps(randCodeKey).get()+"";
+            String redisRandCode = redisTemplate.boundValueOps(randCodeKey).get() + "";
             // 判断前端发来的随机码和redis保存的随机码是否一致
-            if( ! redisRandCode.equals(randCode)){
+            if (!redisRandCode.equals(randCode)) {
                 // 随机码不一致,抛出异常,终止业务
                 throw new CoolSharkServiceException(ResponseCode.NOT_FOUND,
                         "没有找到指定商品(随机码不正确)");
             }
             // 运行到此处,表示随机码匹配,可以执行购买
-            SeckillCommitVO commitVO=
+            SeckillCommitVO commitVO =
                     seckillService.commitSeckill(seckillOrderAddDTO);
             return JsonResult.ok(commitVO);
 
-        }else{
+        } else {
             // 当redis中没有保存这个商品的SpuId对应的随机码时,抛出异常
             throw new CoolSharkServiceException(ResponseCode.NOT_FOUND,
                     "没有找到指定商品");
         }
 
     }
-
-
 
 
 }

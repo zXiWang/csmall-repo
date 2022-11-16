@@ -17,8 +17,8 @@ public class UserDetailAddDTO implements Serializable {
      * 生日
      */
     @ApiModelProperty(
-            value="生日，格式yyyy-MM-dd",
-            name="dayOfBirth",
+            value = "生日，格式yyyy-MM-dd",
+            name = "dayOfBirth",
             example = "1999-10-10")
     private LocalDate dayOfBirth;
 
@@ -26,24 +26,24 @@ public class UserDetailAddDTO implements Serializable {
      * 国家
      */
     @ApiModelProperty(
-            value="国家",
-            name="country",
+            value = "国家",
+            name = "country",
             example = "中国")
     private String country;
     /**
      * 性别 1=男 0=女
      */
     @ApiModelProperty(
-            value="性别 1=男 0=女",
-            name="gender",
+            value = "性别 1=男 0=女",
+            name = "gender",
             example = "1")
     private Integer gender;
     /**
      * 省
      */
     @ApiModelProperty(
-            value="省",
-            name="province",
+            value = "省",
+            name = "province",
             example = "北京")
     private String province;
 
@@ -51,8 +51,8 @@ public class UserDetailAddDTO implements Serializable {
      * 市
      */
     @ApiModelProperty(
-            value="市",
-            name="city",
+            value = "市",
+            name = "city",
             example = "北京")
     private String city;
 
@@ -60,8 +60,8 @@ public class UserDetailAddDTO implements Serializable {
      * 区
      */
     @ApiModelProperty(
-            value="区",
-            name="district",
+            value = "区",
+            name = "district",
             example = "朝阳")
     private String district;
 
@@ -69,8 +69,8 @@ public class UserDetailAddDTO implements Serializable {
      * 学历
      */
     @ApiModelProperty(
-            value="学历",
-            name="education",
+            value = "学历",
+            name = "education",
             example = "研究生")
     private String education;
 
@@ -78,8 +78,8 @@ public class UserDetailAddDTO implements Serializable {
      * 行业
      */
     @ApiModelProperty(
-            value="行业",
-            name="industry",
+            value = "行业",
+            name = "industry",
             example = "教育")
     private String industry;
 
@@ -87,8 +87,8 @@ public class UserDetailAddDTO implements Serializable {
      * 职业
      */
     @ApiModelProperty(
-            value="职业",
-            name="career",
+            value = "职业",
+            name = "career",
             example = "老师")
     private String career;
 }

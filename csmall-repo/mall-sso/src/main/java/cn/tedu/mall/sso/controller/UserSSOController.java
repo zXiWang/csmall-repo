@@ -2,8 +2,8 @@ package cn.tedu.mall.sso.controller;
 
 import cn.tedu.mall.common.restful.JsonResult;
 import cn.tedu.mall.sso.pojo.dto.UserLoginDTO;
-import cn.tedu.mall.sso.security.service.user.IUserSSOService;
 import cn.tedu.mall.sso.pojo.vo.TokenVO;
+import cn.tedu.mall.sso.security.service.user.IUserSSOService;
 import cn.tedu.mall.sso.utils.LoginUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,14 +30,15 @@ public class UserSSOController {
     private IUserSSOService userSSOService;
     @Value("${jwt.tokenHead}")
     private String jwtTokenHead;
+
     @ApiOperation(value = "前台单点登录认证登录")
     @PostMapping("/login")
-    public JsonResult<TokenVO> doLogin(@Valid UserLoginDTO userLoginDTO, HttpServletRequest request){
+    public JsonResult<TokenVO> doLogin(@Valid UserLoginDTO userLoginDTO, HttpServletRequest request) {
         //先补充数据
         String ip = LoginUtils.getIpAddress(request);
-        log.info("远程ip地址:{}",ip);
-        String userAgent=request.getHeader("User-Agent");
-        log.info("远程客户端:{}",userAgent);
+        log.info("远程ip地址:{}", ip);
+        String userAgent = request.getHeader("User-Agent");
+        log.info("远程客户端:{}", userAgent);
         userLoginDTO.setIp(ip);
         userLoginDTO.setUserAgent(userAgent);
         String token = userSSOService.doLogin(userLoginDTO);
@@ -46,13 +47,14 @@ public class UserSSOController {
         tokenVO.setTokenValue(token);
         return JsonResult.ok(tokenVO);
     }
+
     /**
      * <p>登出logout</p>
      * <p>没有任何实际业务逻辑</p>
      */
     @ApiOperation(value = "前台单点登录认证登出")
     @PostMapping("/logout")
-    public JsonResult doLogout(@RequestHeader(name = "Authorization") String token){
+    public JsonResult doLogout(@RequestHeader(name = "Authorization") String token) {
         userSSOService.doLogout(token);
         return JsonResult.ok();
     }

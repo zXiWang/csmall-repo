@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * @author tedu.cn
  * @since 2022-02-22
  */
-public interface UserDetailMapper{
+public interface UserDetailMapper {
     void insertUserDetail(UserDetail userDetail);
 
     UserDetailStandardVO selectUserDetailByUserId(@Param("userId") Long userId);

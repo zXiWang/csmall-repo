@@ -18,7 +18,7 @@ public class ListConvertUtils {
             List<T> list = objectMapper.readValue(json, listType);
             return list;
         } catch (JsonProcessingException e) {
-            log.info("将当前类:{}转化list时失败",object.getName());
+            log.info("将当前类:{}转化list时失败", object.getName());
             e.printStackTrace();
         }
         return null;

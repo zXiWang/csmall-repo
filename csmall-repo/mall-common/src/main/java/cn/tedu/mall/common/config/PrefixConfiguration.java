@@ -12,23 +12,25 @@ public class PrefixConfiguration {
     6.在特殊情况下,允许业务层自定义key值*/
 
 
-    public static class SpuPrefixConfiguration{
+    public static class SpuPrefixConfiguration {
         //spu 返回对象SpuSimpleVO的前缀 后面拼接spuId
-        public static final String SPU_STANDARD_VO_PREFIX="mall:spu:standard:vo:";
-        public static final String SPU_PREFIX="spu:";
-        public static final String SPU_BLOOM_FILTER_PREFIX="spu:bloom:filter:";
+        public static final String SPU_STANDARD_VO_PREFIX = "mall:spu:standard:vo:";
+        public static final String SPU_PREFIX = "spu:";
+        public static final String SPU_BLOOM_FILTER_PREFIX = "spu:bloom:filter:";
     }
-    public static class SkuPrefixConfiguration{
-        public static final String SKU_SIMPLE_VO_PREFIX="sku:simple:vo:";
-        public static final String SKU_PREFIX="sku:";
+
+    public static class SkuPrefixConfiguration {
+        public static final String SKU_SIMPLE_VO_PREFIX = "sku:simple:vo:";
+        public static final String SKU_PREFIX = "sku:";
     }
-    public static class SeckillPrefixConfiguration{
-        public static final String SECKILL_RE_SECKILL_PREFIX="mall:seckill:reseckill:";
-        public static final String SECKILL_SPU_PREFIX="mall:seckill:spu:";
-        public static final String SECKILL_SPU_VO_PREFIX="mall:seckill:spu:vo:";
-        public static final String SECKILL_SPU_URL_RAND_CODE_PREFIX="mall:seckill:spu:url:rand:code:";
+
+    public static class SeckillPrefixConfiguration {
+        public static final String SECKILL_RE_SECKILL_PREFIX = "mall:seckill:reseckill:";
+        public static final String SECKILL_SPU_PREFIX = "mall:seckill:spu:";
+        public static final String SECKILL_SPU_VO_PREFIX = "mall:seckill:spu:vo:";
+        public static final String SECKILL_SPU_URL_RAND_CODE_PREFIX = "mall:seckill:spu:url:rand:code:";
         //秒杀商品库存
-        public static final String SECKILL_SKU_STOCK_PREFIX="mall:seckill:sku:stock:";
+        public static final String SECKILL_SKU_STOCK_PREFIX = "mall:seckill:sku:stock:";
         public static final String SECKILL_SKU_VO_PREFIX = "mall:seckill:sku:vo:";
     }
 }

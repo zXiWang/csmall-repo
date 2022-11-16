@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Import;
 @Import({MallCommonConfiguration.class})
 public class MallPassportWebApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(MallPassportWebApiApplication.class,args);
+        SpringApplication.run(MallPassportWebApiApplication.class, args);
     }
 }

@@ -29,8 +29,8 @@ public class UserUserDetails implements Serializable, UserDetails {
     private List<UserAutority> authorities;
 
     public UserUserDetails() {
-        authorities =new ArrayList<>();
-        UserAutority authority=new UserAutority();
+        authorities = new ArrayList<>();
+        UserAutority authority = new UserAutority();
         authority.setAuthority("ROLE_user");
         authorities.add(authority);
     }

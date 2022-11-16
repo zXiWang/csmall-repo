@@ -11,10 +11,11 @@ import java.util.List;
 
 /**
  * 前台商城商品对象
+ *
  * @author xiaoxuwei
  * @version 1.0.0
  */
-@ApiModel(value="商品详情",description = "包含了展示商品详情的所有数据")
+@ApiModel(value = "商品详情", description = "包含了展示商品详情的所有数据")
 @Data
 @Deprecated
 public class FrontProductVO implements Serializable {
@@ -76,7 +77,7 @@ public class FrontProductVO implements Serializable {
     private LocalDateTime gmtCheck;
     @ApiModelProperty(value = "spu包含了sku列表")
     private List<FrontSkuSimpleVO> skusList;
-    @ApiModelProperty(value="spu关联的属性列表")
+    @ApiModelProperty(value = "spu关联的属性列表")
     private List<FrontAttributeSimpleVO> frontAttributeVOList;
 
 }

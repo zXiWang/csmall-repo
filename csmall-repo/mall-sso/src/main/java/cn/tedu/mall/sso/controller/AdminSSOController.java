@@ -1,10 +1,9 @@
 package cn.tedu.mall.sso.controller;
 
-import cn.tedu.mall.sso.pojo.dto.AdminLoginDTO;
-import cn.tedu.mall.sso.security.service.admin.IAdminSSOService;
 import cn.tedu.mall.common.restful.JsonResult;
-
+import cn.tedu.mall.sso.pojo.dto.AdminLoginDTO;
 import cn.tedu.mall.sso.pojo.vo.TokenVO;
+import cn.tedu.mall.sso.security.service.admin.IAdminSSOService;
 import cn.tedu.mall.sso.utils.LoginUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,21 +24,23 @@ import javax.validation.Valid;
 @Api(tags = "后台管理用户认证")
 @Slf4j
 public class AdminSSOController {
+    @Autowired
+    private IAdminSSOService adminSSOService;
+    @Value("${jwt.tokenHead}")
+    private String jwtTokenHead;
+
     /**
      * 测试代码
+     *
      * @param authentication
      * @return
      */
     @Deprecated
     @GetMapping("/home")
-    @ApiOperation(value="测试用户数据认证对象生成问题")
-    private JsonResult home(Authentication authentication){
+    @ApiOperation(value = "测试用户数据认证对象生成问题")
+    private JsonResult home(Authentication authentication) {
         return JsonResult.ok(authentication);
     }
-    @Autowired
-    private IAdminSSOService adminSSOService;
-    @Value("${jwt.tokenHead}")
-    private String jwtTokenHead;
 
     /**
      * <p>登录login</p>
@@ -47,12 +48,12 @@ public class AdminSSOController {
      */
     @ApiOperation(value = "后台单点登录认证登录")
     @PostMapping("/login")
-    public JsonResult<TokenVO> doLogin(@Valid AdminLoginDTO adminLoginDTO, HttpServletRequest request){
+    public JsonResult<TokenVO> doLogin(@Valid AdminLoginDTO adminLoginDTO, HttpServletRequest request) {
         //先补充数据
         String remoteAddr = LoginUtils.getIpAddress(request);//如果是localhost访问会记录ipv6格式的本机地址,正常
-        log.info("远程ip地址:{}",remoteAddr);
-        String userAgent=request.getHeader("User-Agent");
-        log.info("远程客户端:{}",userAgent);
+        log.info("远程ip地址:{}", remoteAddr);
+        String userAgent = request.getHeader("User-Agent");
+        log.info("远程客户端:{}", userAgent);
         adminLoginDTO.setIp(remoteAddr);
         adminLoginDTO.setUserAgent(userAgent);
         String token = adminSSOService.doLogin(adminLoginDTO);
@@ -68,7 +69,7 @@ public class AdminSSOController {
      */
     @ApiOperation(value = "单点登录认证登出")
     @PostMapping("/logout")
-    public JsonResult doLogout(@RequestHeader(name = "Authorization") String token){
+    public JsonResult doLogout(@RequestHeader(name = "Authorization") String token) {
         adminSSOService.doLogout(token);
         return JsonResult.ok();
     }

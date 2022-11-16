@@ -15,8 +15,6 @@ import cn.tedu.mall.pojo.product.vo.SpuStandardVO;
 import cn.tedu.mall.product.constant.DataCommonConst;
 import cn.tedu.mall.product.mapper.*;
 import cn.tedu.mall.product.utils.IdGeneratorUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
