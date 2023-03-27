@@ -51,7 +51,7 @@
         <knife4j-spring-boot.version>2.0.9</knife4j-spring-boot.version>
         <spring-rabbit-test.version>2.3.10</spring-rabbit-test.version>
         <spring-security-test.version>5.5.2</spring-security-test.version>
-        <fastjson.version>1.2.45</fastjson.version>
+        <fastjson.version>1.2.61</fastjson.version>
         <druid.version>1.1.20</druid.version>
         <jjwt.version>0.9.0</jjwt.version>
         <redisson.version>3.17.0</redisson.version>
